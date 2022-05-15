@@ -14,12 +14,14 @@ public class Transaction {
     @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "account_Wallet", unique = true, nullable = false)
-    private int account_Wallet;
+    @ManyToOne
+    @JoinColumn(name = "account_wallet", unique = true, nullable = false)
+    private Wallet account_Wallet;
 
-    @Column(name = "account", nullable = false)
+    @Column(name = "type", nullable = false)
     private String type;
 
-    @Column(name = "amount", nullable = false)
-    private float amount;
+    @Column(name = "amount_transaction", nullable = false)
+    private float amount_transaction;
+
 }

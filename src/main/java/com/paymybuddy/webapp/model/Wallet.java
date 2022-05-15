@@ -14,12 +14,13 @@ public class Wallet {
     @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "amount", nullable = false)
-    private float amount;
+    @Column(name = "amount_wallet", nullable = false)
+    private float amount_wallet;
 
-    @Column(name = "id_Person", nullable = false)
-    private int id_Person;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_person")
+    private Person id_Person;
 
-    @Column(name = "account", unique = true, nullable = false)
-    private int account;
+    @Column(name = "account_wallet", unique = true, nullable = false)
+    private int account_wallet;
 }
