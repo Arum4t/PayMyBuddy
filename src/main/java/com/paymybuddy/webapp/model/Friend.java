@@ -1,11 +1,11 @@
 package com.paymybuddy.webapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @Entity
@@ -14,16 +14,14 @@ public class Friend {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_friend", nullable = false)
-    private int id_friend;
+    @Column(name = "id", nullable = false)
+    @JsonIgnore
+    private int id;
 
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    /*@ManyToMany
-    @JoinTable(
-            name="person_friend",
-            joinColumns = @JoinColumn(name="id_friend"),
-            inverseJoinColumns = @JoinColumn(name="id_person"))
-    private Set<Person> persons;*/
+    @ManyToMany(mappedBy = "friends")
+    @JsonBackReference
+    private List<Person> persons;
 }
