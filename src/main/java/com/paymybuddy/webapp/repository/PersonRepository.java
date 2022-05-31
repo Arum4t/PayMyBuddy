@@ -10,4 +10,8 @@ import java.util.List;
 public interface PersonRepository extends JpaRepository<Person, Integer> {
     // query exemple
     // @Query("select id_person from person...")
+
+    Person findByEmail(String email);
+
+    boolean existsByEmail(String email);
 }

@@ -1,4 +1,4 @@
-package com.paymybuddy.webapp.repository;
+package com.paymybuddy.webapp.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

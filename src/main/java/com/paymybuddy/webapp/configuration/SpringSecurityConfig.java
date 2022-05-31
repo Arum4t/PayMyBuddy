@@ -35,6 +35,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "index", "css/*", "/js/*").permitAll()
                 // .antMatchers(HttpMethod.DELETE,"persons/**").hasAnyAuthority(ApplicationUserPermission.USER_WRITE.name())
                 //.antMatchers("/**").hasRole(USER.name())
+                .antMatchers("/register").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

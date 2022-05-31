@@ -1,6 +1,7 @@
 package com.paymybuddy.webapp.service;
 
 import com.paymybuddy.webapp.model.Person;
+import com.paymybuddy.webapp.model.PersonData;
 
 import java.util.List;
 
@@ -10,4 +11,6 @@ public interface IPersonService {
     Person getPersonById(Integer id);
     Person updatePerson(Person person, Integer id);
     void deletePerson(Integer id);
+    void register(PersonData user) throws Exception;
+    boolean checkIfUserExist(String email);
 }

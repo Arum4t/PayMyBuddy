@@ -5,16 +5,15 @@ use `paymybuddy`;
 DROP TABLE IF EXISTS `Person`;
 CREATE TABLE `Person`
 (
-	`id`INTEGER NOT NULL,
+	`id`INTEGER NOT NULL auto_increment,
     `email` VARCHAR(100) NOT NULL UNIQUE,
     `password` VARCHAR(100),
     `role` VARCHAR(100),
 	PRIMARY KEY (`id`)
 );
 INSERT INTO `Person` (`id`,`email`, `password`,`role`)
-
 VALUES
-(1,'oliver@test.com', '$2a$12$8zeEZLc3EdOUbzVfsMsEVu5SI/UnPE4wsV2cGdsFjX0seHBaXMfua','user'),
+(1,'olivier@test.com', '$2a$12$8zeEZLc3EdOUbzVfsMsEVu5SI/UnPE4wsV2cGdsFjX0seHBaXMfua','user'),
 (2,'bertrand@test.com', '$2a$12$UF7oLqJwmM9vjUqtjIK.GOJ..Aay.AgEY45KOJb6ukNDKloyEIY9S','user'),
 (3,'tim@test.com', '$2a$12$hTmdt.M.pyvj1GpYTBIlC.Er2vR6G1eK/fzs8nR4m6/Rtsetj7KKG','admin');
 
