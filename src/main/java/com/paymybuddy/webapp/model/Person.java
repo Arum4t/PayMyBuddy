@@ -1,7 +1,6 @@
 package com.paymybuddy.webapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,7 +15,7 @@ public class Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "email", unique = true, nullable = false)
     private String email;
@@ -28,11 +27,16 @@ public class Person{
     @Column(name = "role", nullable = false)
     private String role;
 
-    @ManyToMany
-    @JoinTable(
-            name = "person_friend",
-            joinColumns = @JoinColumn(name = "id_person"),
-            inverseJoinColumns = @JoinColumn(name = "id_friend"))
-    @JsonManagedReference
-    private List<Friend> friends;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "emitterPersonId")
+    private List<Transaction> emitterPersonListOperation;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "receiverPersonId")
+    private List<Transaction> receiverPersonListOperation;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
+    private List<Contact> personListContact;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact")
+    private List<Contact> contactListContact;
+
 }

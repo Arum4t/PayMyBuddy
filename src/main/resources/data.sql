@@ -17,38 +17,23 @@ VALUES
 (2,'bertrand@test.com', '$2a$12$UF7oLqJwmM9vjUqtjIK.GOJ..Aay.AgEY45KOJb6ukNDKloyEIY9S','user'),
 (3,'tim@test.com', '$2a$12$hTmdt.M.pyvj1GpYTBIlC.Er2vR6G1eK/fzs8nR4m6/Rtsetj7KKG','admin');
 
-DROP TABLE IF EXISTS `Friend`;
-CREATE TABLE `Friend`
+DROP TABLE IF EXISTS `contacts`;
+CREATE TABLE `contacts`
 (
 	`id`INTEGER NOT NULL,
-	`email` VARCHAR(100) NOT NULL UNIQUE,
-	PRIMARY KEY (`id`)
-);
-
-INSERT INTO `Friend` (`id`, `email`)
-
-VALUES
-(1, 'bernard@test_friend.com'),
-(2, 'gertrude@test_friend.com'),
-(3, 'georges@test_friend.com');
-
-DROP TABLE IF EXISTS `person_friend`;
-CREATE TABLE `person_friend`
-(
     `id_person` INTEGER NOT NULL,
-	`id_friend` INTEGER NOT NULL,
-    FOREIGN KEY (`id_person`) REFERENCES `Person`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-    FOREIGN KEY (`id_friend`) REFERENCES `Friend`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-	PRIMARY KEY (`id_person`, `id_friend`)
-    
+	`id_contact` INTEGER NOT NULL,
+    FOREIGN KEY (`id_person`) REFERENCES `Person`(`id`),
+    FOREIGN KEY (`id_contact`) REFERENCES `Person`(`id`)
 );
 
-INSERT INTO `person_friend` (`id_person`, `id_friend`)
+INSERT INTO `contacts` (`id`,`id_person`, `id_contact`)
 
 VALUES
-(1, 1),
-(1,2),
-(2, 2);
+(1,1,2),
+(2,1,3),
+(3,2,1),
+(4,3,1);
 
 DROP TABLE IF EXISTS `Wallet`;
 CREATE TABLE `Wallet`
@@ -76,13 +61,17 @@ CREATE TABLE `Transaction`
 	`id` INTEGER NOT NULL,
 	`type` VARCHAR(100),
 	`amount_transaction` FLOAT,
-	FOREIGN KEY (`id_wallet`) references `Wallet`(`id`)
+    `receiver_id` INTEGER NOT NULL,
+    `emitter_id` INTEGER NOT NULL,
+	FOREIGN KEY (`id_wallet`) references `Wallet`(`id`),
+    FOREIGN KEY (`receiver_id`) references `Person`(`id`),
+    FOREIGN KEY (`emitter_id`) references `Person`(`id`)
 );
 
-INSERT INTO `Transaction` (`id_wallet`, `id`,`type`,`amount_transaction`)
+INSERT INTO `Transaction` (`id_wallet`, `id`,`type`,`amount_transaction`,`receiver_id`,`emitter_id`)
 
 VALUES
-(1,1,'retirer', 100),
-(2,2,'ajouter', 100),
-(1,3,'donner', 100),
-(3,4,'retirer', 500);
+(1,1,'pizza', 100,1,2),
+(2,2,'voyages', 100,2,1),
+(1,3,'achat', 100,1,3),
+(3,4,'restaurant', 500,3,1);

@@ -1,11 +1,14 @@
 package com.paymybuddy.webapp.service;
 
 import com.paymybuddy.webapp.exception.ResourceNotFoundException;
+import com.paymybuddy.webapp.model.Person;
 import com.paymybuddy.webapp.model.Wallet;
 import com.paymybuddy.webapp.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,6 +16,9 @@ public class WalletService implements IWalletService{
 
     @Autowired
     private WalletRepository walletRepository;
+
+    @Autowired
+    private PersonService personService;
 
     @Override
     public Wallet saveWallet(Wallet wallet) {
@@ -45,5 +51,16 @@ public class WalletService implements IWalletService{
        walletRepository.findById(id).orElseThrow(
                 ()-> new ResourceNotFoundException("Wallet", "Id", id));
        walletRepository.deleteById(id);
+    }
+
+    public Wallet getCurrentPersonWallet(Principal principal){
+        Person person = personService.getPersonByEmail(principal.getName());
+        List<Wallet> wallets = getAllWallet();
+        for (Wallet wallet: wallets){
+            if(wallet.getPerson().getEmail().equals(person.getEmail())){
+                return wallet;
+            }
+        }
+        return null;
     }
 }

@@ -19,7 +19,7 @@ public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
-    private int id;
+    private Integer id;
 
     @Column(name = "amount_wallet", nullable = false)
     private float amount_wallet;

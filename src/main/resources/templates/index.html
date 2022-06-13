@@ -1,34 +1,27 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8" />
-    <title>Welcome</title>
-    <!-- <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/> -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Pay My Buddy</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body>
-<h1>Welcome</h1>
-<h2 th:utext="${message}">..!..</h2>
+<div class="box">
 
-<!--
+    <h1 class="title"> Pay My Buddy </h1>
 
-   In Thymeleaf the equivalent of
-   JSP's ${pageContext.request.contextPath}/edit.html
-   would be @{/edit.html}
+    <p class="login-box-msg">Welcome to Pay My Buddy application </p>
+        <div class="login">
+            <form class="form-signin" method="get" action="/login">
+                <button class="btn btn-primary btn-block" type="submit">Login</button>
+            </form>
+        </div>
 
-   -->
-<!--
-<a th:href="@{/login}">Login</a>
--->
-<form class="form-signin" method="get" action="/login">
-    <button class="btn btn-primary btn-block" type="submit">Login</button>
-</form>
-<form class="form-signin" method="get" action="/register">
-    <button class="btn btn-primary btn-block" type="submit">Register</button>
-</form>
-
-
+        <div class="register">
+            <form class="form-signin" method="get" action="/register">
+                <button class="btn btn-primary btn-block" type="submit">Register</button>
+            </form>
+        </div>
+</div>
 </body>
-
 </html>

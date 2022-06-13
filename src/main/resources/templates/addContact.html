@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>Pay My Buddy</title>
+</head>
+<body>
+<div class="header">
+  <h1>PayMyBuddy</h1>
+  <div class="menu">
+    <ul class="menu_ul">
+      <li class="menu_li"><a href="/home">Home</a></li>
+      <li class="menu_li"><a href="/transfers">Transfer</a></li>
+      <li class="menu_li"><a href="/profile">Profile</a></li>
+      <li class="menu_li"><a href="/contacts">Contact</a></li>
+      <li class="menu_li"><a href="/logout">Log off</a></li>
+    </ul>
+  </div>
+</div>
+<div class="content_breadcrumb">
+  <div class="breadcrumb">
+    <ul class="breadcrumb_ul">
+      <li class="breadcrumb_li">Home</li>
+      <li class="breadcrumb_li">/</li>
+      <li class="breadcrumb_li">Transfer</li>
+      <li class="breadcrumb_li">/</li>
+      <li class="breadcrumb_li">Profile</li>
+      <li class="breadcrumb_li">/</li>
+      <li class="breadcrumb_li">Contact</li>
+    </ul>
+  </div>
+</div>
+
+<h1>Add a contact</h1>
+<form method="post" th:action="@{/contacts/add}" th:object="${contactInfo}">
+  <input id="email" placeholder="Enter email" required type="text" th:field="*{email}"/>
+  <input type="submit" value="Add">
+</form>
+<div th:if="${errorMessage}" th:utext="${errorMessage}"
+     style="color:red;font-style:italic;">
+  ...
+</div>
+
+</body>
+</html>

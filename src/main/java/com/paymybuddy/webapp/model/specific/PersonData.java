@@ -1,4 +1,4 @@
-package com.paymybuddy.webapp.model;
+package com.paymybuddy.webapp.model.specific;
 
 import lombok.Data;
 

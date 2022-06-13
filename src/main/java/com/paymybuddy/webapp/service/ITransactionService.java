@@ -8,6 +8,7 @@ public interface ITransactionService {
     Transaction saveTransaction(Transaction transaction);
     List<Transaction> getAllTransactions();
     Transaction getTransactionById(Integer id);
+    List<Transaction> getTransactionByWalletId(Integer id_wallet);
     Transaction updateTransaction(Transaction transaction, Integer id);
     void deleteTransaction(Integer id);
 }

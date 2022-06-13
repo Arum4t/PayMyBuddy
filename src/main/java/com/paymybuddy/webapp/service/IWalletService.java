@@ -8,6 +8,7 @@ public interface IWalletService {
     Wallet saveWallet (Wallet wallet);
     List<Wallet> getAllWallet();
     Wallet getWalletById(Integer id);
+   // Wallet getWalletByPersonId(Integer id_person);
     Wallet updateWallet(Wallet wallet, Integer id);
     void deleteWallet(Integer id);
 }

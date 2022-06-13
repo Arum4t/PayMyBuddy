@@ -6,10 +6,9 @@
     <link th:href="@{/css/style-home.css}" rel="stylesheet"/>
 </head>
 <body>
-
 <div class="header">
 
-        <h1 class="title"> Pay My Buddy </h1>
+    <h1 class="title"> Pay My Buddy </h1>
 
     <div class="menu">
         <ul class="menu_ul">
@@ -24,14 +23,22 @@
 <div class="content_breadcrumb">
     <div class="breadcrumb">
         <ul class="breadcrumb_ul">
-            <li class="breadcrumb_li_actual">Home /</li>
+            <li class="breadcrumb_li">Home</li>
+            <li class="breadcrumb_li">/</li>
+            <li class="breadcrumb_li">Transfer</li>
+            <li class="breadcrumb_li">/</li>
+            <li class="breadcrumb_li_actual">Profile</li>
         </ul>
     </div>
 </div>
 
-<p class="home-content">
-    Hello ! Welcome in Pay my Buddy application !
-</p>
+<p>Email: </p>
+<div th:text="${profile.email}"> Email </div>
+<p>Account: </p>
+<div th:text="${profileWallet.account}"> WalletAccount </div>
+<p>Balance: </p>
+<div th:text="${profileWallet.amount_wallet}"> WalletAmount </div>
+<!-- add change email button -->
 
 </body>
 </html>

@@ -2,7 +2,7 @@ package com.paymybuddy.webapp.service;
 
 import com.paymybuddy.webapp.exception.ResourceNotFoundException;
 import com.paymybuddy.webapp.model.Person;
-import com.paymybuddy.webapp.model.PersonData;
+import com.paymybuddy.webapp.model.specific.PersonData;
 import com.paymybuddy.webapp.repository.PersonRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +35,11 @@ public class PersonService implements IPersonService {
                 new ResourceNotFoundException("Person", "Id", id));
     }
     @Override
+    public Person getPersonByEmail(String email) {
+        return personRepository.findByEmail(email);
+    }
+
+    @Override
     public Person updatePerson(Person person, Integer id) {
         // Check personId exist in DB or not
         Person existingPerson = personRepository.findById(id).orElseThrow(
@@ -56,7 +61,6 @@ public class PersonService implements IPersonService {
     @Override
     public void register(PersonData personData) throws Exception {
 
-        //Let's check if user already registered with us
         if(checkIfUserExist(personData.getEmail())){
             throw new Exception("User already exists for this email");
         }
@@ -64,6 +68,8 @@ public class PersonService implements IPersonService {
         BeanUtils.copyProperties(personData, person);
         encodePassword(person, personData);
         personRepository.save(person);
+
+        // TODO : Ajouter un role spring security par défaut ici ?
     }
 
 

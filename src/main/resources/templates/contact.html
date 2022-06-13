@@ -6,10 +6,9 @@
     <link th:href="@{/css/style-home.css}" rel="stylesheet"/>
 </head>
 <body>
-
 <div class="header">
 
-        <h1 class="title"> Pay My Buddy </h1>
+    <h1 class="title"> Pay My Buddy </h1>
 
     <div class="menu">
         <ul class="menu_ul">
@@ -24,14 +23,30 @@
 <div class="content_breadcrumb">
     <div class="breadcrumb">
         <ul class="breadcrumb_ul">
-            <li class="breadcrumb_li_actual">Home /</li>
+            <li class="breadcrumb_li">Home</li>
+            <li class="breadcrumb_li">/</li>
+            <li class="breadcrumb_li">Transfer</li>
+            <li class="breadcrumb_li">/</li>
+            <li class="breadcrumb_li">Profile</li>
+            <li class="breadcrumb_li">/</li>
+            <li class="breadcrumb_li_actual">Contact</li>
+
         </ul>
     </div>
 </div>
 
-<p class="home-content">
-    Hello ! Welcome in Pay my Buddy application !
-</p>
+<a class="add-contact" href="/contacts/add">Add a contact</a>
+
+<!--<p>Contacts: </p>-->
+<!--<table class="tab">-->
+<!--    <tr>-->
+<!--        <th>Email</th>-->
+<!--    </tr>-->
+<!--    <tr th:each ="contact : ${contacts}">-->
+<!--        <td th:text ="${contact.email}"></td>-->
+<!--        <td><a th:href="@{/friends/{id}(id=${friend.id})}">Delete</a></td>-->
+    </tr>
+</table>
 
 </body>
 </html>

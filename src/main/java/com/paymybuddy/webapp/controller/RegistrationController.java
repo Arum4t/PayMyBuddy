@@ -1,6 +1,6 @@
 package com.paymybuddy.webapp.controller;
 
-import com.paymybuddy.webapp.model.PersonData;
+import com.paymybuddy.webapp.model.specific.PersonData;
 import com.paymybuddy.webapp.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
