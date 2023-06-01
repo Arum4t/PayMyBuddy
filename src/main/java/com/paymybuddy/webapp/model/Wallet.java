@@ -1,14 +1,12 @@
 package com.paymybuddy.webapp.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity
@@ -18,21 +16,21 @@ public class Wallet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
-    private Integer id;
+    @Column(name = "id_wallet")
+    private Integer idWallet;
 
     @Column(name = "amount_wallet", nullable = false)
-    private float amount_wallet;
+    private float amount;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    private Person person;
+    @JoinColumn(name = "id_person")
+    private Person idPerson;
 
-    @Column(name = "account", unique = true, nullable = false)
-    private int account;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "walletEmitter")
+    @JsonManagedReference
+    private List<Transaction> emitterPersonListOperation;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "wallet")
-    @JsonBackReference
-    private List<Transaction> transactions;
-
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "walletReceiver")
+    @JsonManagedReference
+    private List<Transaction> receiverPersonListOperation;
 }

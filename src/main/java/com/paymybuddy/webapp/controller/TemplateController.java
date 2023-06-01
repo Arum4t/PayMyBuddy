@@ -36,11 +36,15 @@ public class TemplateController {
     public String getHomeView(){
         return "home";
     }
+    @GetMapping("/addConnection")
+    public String getAddConnectionView(){
+        return "addConnection";
+    }
 
     @GetMapping("/profiles")
     public String currentPersonProfile(Model model, Principal principal){
         Person person = personService.getPersonByEmail(principal.getName());
-        Integer personId = person.getId();
+        Integer personId = person.getIdPerson();
         Wallet wallet = walletService.getWalletById(personId);
         model.addAttribute("profile", person);
         model.addAttribute("profileWallet", wallet);
@@ -52,8 +56,8 @@ public class TemplateController {
         List<Wallet> wallets = walletService.getAllWallet();
         List<Wallet> walletList = new ArrayList<>();
         for (Wallet wallet: wallets){
-            if(wallet.getPerson().getEmail().equals(person.getEmail())){
-                List<Transaction> transaction = transactionService.getTransactionByWalletId(wallet.getId());
+            if(wallet.getIdPerson().getEmail().equals(person.getEmail())){
+                List<Transaction> transaction = transactionService.getTransactionByWalletId(person.getIdPerson());
                 model.addAttribute("transactions", transaction);
                 return "transfer";
             }

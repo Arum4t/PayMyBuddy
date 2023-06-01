@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ContactRepository extends JpaRepository<Contact, Integer> {
-    Contact findByPersonIdAndContactId(Integer personId, Integer contactId);
+//    Contact findByPersonIdAndContactId(Integer idPerson, Integer id_contact);
 }

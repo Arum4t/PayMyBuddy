@@ -43,9 +43,12 @@ public class PersonService implements IPersonService {
     public Person updatePerson(Person person, Integer id) {
         // Check personId exist in DB or not
         Person existingPerson = personRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("Person", "Id", id));
+                ()-> new ResourceNotFoundException("Person", "Id", id)
+        );
+
         existingPerson.setEmail(person.getEmail());
         existingPerson.setPassword(person.getPassword());
+
         // Save existing Person to DB
         personRepository.save(existingPerson);
         return existingPerson;
@@ -61,7 +64,7 @@ public class PersonService implements IPersonService {
     @Override
     public void register(PersonData personData) throws Exception {
 
-        if(checkIfUserExist(personData.getEmail())){
+        if(checkIfUserExist(personData.getEmail())) {
             throw new Exception("User already exists for this email");
         }
         Person person = new Person();
@@ -81,6 +84,5 @@ public class PersonService implements IPersonService {
     private void encodePassword( Person person, PersonData user){
         person.setPassword(passwordEncoder.encode(user.getPassword()));
     }
-
 }
 

@@ -40,8 +40,7 @@ public class WalletService implements IWalletService{
     public Wallet updateWallet(Wallet wallet, Integer id) {
         Wallet existingWallet = walletRepository.findById(id).orElseThrow(
                 ()-> new ResourceNotFoundException("Wallet", "Id", id));
-        existingWallet.setAmount_wallet(wallet.getAmount_wallet());
-        existingWallet.setAccount(wallet.getAccount());
+        existingWallet.setAmount(wallet.getAmount());
         walletRepository.save(existingWallet);
         return existingWallet;
     }
@@ -57,7 +56,7 @@ public class WalletService implements IWalletService{
         Person person = personService.getPersonByEmail(principal.getName());
         List<Wallet> wallets = getAllWallet();
         for (Wallet wallet: wallets){
-            if(wallet.getPerson().getEmail().equals(person.getEmail())){
+            if(wallet.getIdPerson().getEmail().equals(person.getEmail())){
                 return wallet;
             }
         }

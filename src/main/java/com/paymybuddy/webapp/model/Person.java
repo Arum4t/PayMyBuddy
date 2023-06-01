@@ -1,9 +1,12 @@
 package com.paymybuddy.webapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.*;
 
 
@@ -14,10 +17,11 @@ public class Person{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "id_person")
+    private Integer idPerson;
 
     @Column(name = "email", unique = true, nullable = false)
+    @Email
     private String email;
 
     @Column(name = "password", nullable = false)
@@ -27,16 +31,12 @@ public class Person{
     @Column(name = "role", nullable = false)
     private String role;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "emitterPersonId")
-    private List<Transaction> emitterPersonListOperation;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "receiverPersonId")
-    private List<Transaction> receiverPersonListOperation;
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
-    private List<Contact> personListContact;
+    @JsonManagedReference
+    private List<Contact> personList;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact")
-    private List<Contact> contactListContact;
+    @JsonManagedReference
+    private List<Contact> contactList;
 
 }

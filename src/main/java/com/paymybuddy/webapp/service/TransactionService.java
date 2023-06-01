@@ -43,15 +43,16 @@ public class TransactionService implements ITransactionService {
 
     @Override
     public List<Transaction> getTransactionByWalletId(Integer id_wallet) {
-        return transactionRepository.findByWalletId(id_wallet);
+//        return transactionRepository.findByWalletId(id_wallet);
+        return null;
     }
 
     @Override
     public Transaction updateTransaction(Transaction transaction, Integer id) {
         Transaction existingTransaction = transactionRepository.findById(id).orElseThrow(
                 ()-> new ResourceNotFoundException("Transaction", "Id", id));
-        existingTransaction.setAmount_transaction(transaction.getAmount_transaction());
-        existingTransaction.setType(transaction.getType());
+        existingTransaction.setAmount(transaction.getAmount());
+        existingTransaction.setDescription(transaction.getDescription());
         transactionRepository.save(existingTransaction);
         return existingTransaction;
     }

@@ -5,8 +5,6 @@ import com.paymybuddy.webapp.model.Person;
 import com.paymybuddy.webapp.service.ContactService;
 import com.paymybuddy.webapp.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +20,6 @@ public class ContactController {
 
     @Autowired
     private PersonService personService;
-
-    @Value("${error.message}")
-    private String errorMessage;
 
 /*
     // Create
@@ -63,27 +58,17 @@ public class ContactController {
     }*/
 
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)
-    public String currentPersonFriend(Model model, Principal principal){
+    public String currentPersonContact(Model model, Principal principal){
         Person person = personService.getPersonByEmail(principal.getName());
-        List<Contact> contacts = person.getPersonListContact();
-        model.addAttribute("contact", contacts);
-        return "contact";
-    }
-    @RequestMapping(value = "/contacts/add", method = RequestMethod.GET)
-    public String getFriends(Model model) {
-        List<Contact> contacts = contactService.getAllContact();
+        List<Contact> contacts = person.getContactList();
         model.addAttribute("contacts", contacts);
         model.addAttribute("contactInfo", new Contact());
-        return "addContact";
+        return "contact";
     }
-    @RequestMapping(value = "/contacts/add", method = RequestMethod.POST)
-    private String addContact(Model model, @RequestParam String contactEmail, Principal principal) {
+
+    @RequestMapping(value = "/contacts", method = RequestMethod.POST)
+    private String addContact(Model model, @ModelAttribute String contactEmail, Principal principal) {
         contactService.addContact(contactEmail, principal);
-        model.addAttribute("errorMessage", errorMessage);
         return "redirect:/contacts/";
-    }
-    @GetMapping("/friends")
-    public List<Contact> getAllFriend(){
-        return contactService.getAllContact();
     }
 }

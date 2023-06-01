@@ -1,5 +1,6 @@
 package com.paymybuddy.webapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,13 +13,15 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private Integer idListContact;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_person")
+    @JoinColumn(name = "id_person", insertable=false, updatable = false)
+    @JsonBackReference
     private Person person;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_contact")
+    @JoinColumn(name = "id_person", insertable=false, updatable = false)
+    @JsonBackReference
     private Person contact;
 }
