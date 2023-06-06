@@ -15,13 +15,13 @@ public class Contact {
     @Column(name = "id", nullable = false)
     private Integer idListContact;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_person", insertable=false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_person")
     @JsonBackReference
     private Person person;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_person", insertable=false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_contact")
     @JsonBackReference
     private Person contact;
 }

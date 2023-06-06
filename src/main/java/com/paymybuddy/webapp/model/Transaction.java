@@ -23,19 +23,14 @@ public class Transaction {
     @Column(name = "amount_transaction", nullable = false)
     private float amount;
 
-    @Column(name = "id_wallet_emitter", nullable = false)
-    private Integer idWalletEmitter;
 
-    @Column(name = "id_wallet_receiver", nullable = false)
-    private Integer idWalletReceiver;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_wallet", insertable=false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_wallet_emitter")
     @JsonBackReference
     private Wallet walletEmitter;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_wallet", insertable=false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_wallet_receiver")
     @JsonBackReference
     private Wallet walletReceiver;
 

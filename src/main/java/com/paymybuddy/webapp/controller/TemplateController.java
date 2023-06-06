@@ -36,7 +36,7 @@ public class TemplateController {
     public String getHomeView(){
         return "home";
     }
-    @GetMapping("/addConnection")
+    @GetMapping("/add")
     public String getAddConnectionView(){
         return "addConnection";
     }

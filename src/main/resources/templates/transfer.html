@@ -7,6 +7,7 @@
     <meta charset="utf-8" />
     <title>Pay My Buddy</title>
     <link th:href="@{/css/style-home.css}" rel="stylesheet" />
+
   </head>
   <body>
     <div class="header">
@@ -31,9 +32,10 @@
         </ul>
       </div>
     </div>
-
-    <div class="addConnectionButton">
-      <a href="/addConnection" class="button">Add Connection</a>
+    <div class="login">
+      <form class="form-signin" method="get" action="/add">
+        <button class="btn btn-primary btn-block" type="submit">add connection</button>
+      </form>
     </div>
     <p>Send Money</p>
     <!-- Add buttons create transaction -->

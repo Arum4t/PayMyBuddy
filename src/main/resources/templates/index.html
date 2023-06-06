@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Pay My Buddy</title>
-    <link th:href="@{/css/style.css}" rel="stylesheet"/>
-</head>
-<body>
-<div class="box">
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="box">
+      <h1 class="title">Pay My Buddy</h1>
 
-    <h1 class="title"> Pay My Buddy </h1>
+      <p class="login-box-msg">Welcome to Pay My Buddy application</p>
+      <div class="login">
+        <form class="form-signin" method="get" action="/login">
+          <button class="btn btn-primary btn-block" type="submit">Login</button>
+        </form>
+      </div>
 
-    <p class="login-box-msg">Welcome to Pay My Buddy application </p>
-        <div class="login">
-            <form class="form-signin" method="get" action="/login">
-                <button class="btn btn-primary btn-block" type="submit">Login</button>
-            </form>
-        </div>
-
-        <div class="register">
-            <form class="form-signin" method="get" action="/register">
-                <button class="btn btn-primary btn-block" type="submit">Register</button>
-            </form>
-        </div>
-</div>
-</body>
+      <div class="register">
+        <form class="form-signin" method="get" action="/register">
+          <button class="btn btn-primary btn-block" type="submit">
+            Register
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>

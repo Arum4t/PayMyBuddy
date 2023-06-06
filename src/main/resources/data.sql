@@ -20,10 +20,10 @@ VALUES
 DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE `contacts`
 (
-	`id` INTEGER NOT NULL,
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
     `id_person` INTEGER NOT NULL,
 	`id_contact` INTEGER NOT NULL,
-	PRIMARY KEY (`id_contact`, `id_person`),
+	PRIMARY KEY (`id`),
     FOREIGN KEY (`id_person`) REFERENCES `Person`(`id_person`),
     FOREIGN KEY (`id_contact`) REFERENCES `Person`(`id_person`)
 );
@@ -32,20 +32,19 @@ INSERT INTO `contacts` (`id`, `id_person`, `id_contact`)
 
 VALUES
 (1, 1, 2),
-(2, 1, 3),
-(3, 2, 3);
+(2, 2, 3);
 
 DROP TABLE IF EXISTS `Wallet`;
 CREATE TABLE `Wallet`
 (
 	`id_wallet` INTEGER NOT NULL AUTO_INCREMENT,
     `id_person` INTEGER ,
-    `amount` FLOAT,
+    `amount_wallet` FLOAT,
 	PRIMARY KEY (`id_wallet`),
 	FOREIGN KEY (`id_person`) references `Person`(`id_person`)
 );
 
-INSERT INTO `Wallet` (`id_wallet`, `id_person`, `amount`)
+INSERT INTO `Wallet` (`id_wallet`, `id_person`, `amount_wallet`)
 
 VALUES
 (1, 1, 500),
@@ -58,7 +57,7 @@ CREATE TABLE `Transaction`
 (
 	`id_transaction` INTEGER NOT NULL AUTO_INCREMENT,
 	`description` VARCHAR(100),
-	`amount` FLOAT NOT NULL,
+	`amount_transaction` FLOAT NOT NULL,
     `id_wallet_emitter` INTEGER NOT NULL,
     `id_wallet_receiver` INTEGER NOT NULL,
     PRIMARY KEY (`id_transaction`),
@@ -66,7 +65,7 @@ CREATE TABLE `Transaction`
     FOREIGN KEY (`id_wallet_receiver`) references `Wallet`(`id_wallet`)
 );
 
-INSERT INTO `Transaction` (`id_transaction`, `description`, `amount`, `id_wallet_emitter`, `id_wallet_receiver`)
+INSERT INTO `Transaction` (`id_transaction`, `description`, `amount_transaction`, `id_wallet_emitter`, `id_wallet_receiver`)
 
 VALUES
 (1,'pizza', 100,1,2),

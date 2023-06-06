@@ -1,6 +1,7 @@
 package com.paymybuddy.webapp.service;
 
 
+import com.paymybuddy.webapp.exception.NoUserFoundException;
 import com.paymybuddy.webapp.model.Contact;
 import com.paymybuddy.webapp.model.Person;
 import com.paymybuddy.webapp.repository.ContactRepository;
@@ -8,11 +9,14 @@ import com.paymybuddy.webapp.repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @Service
@@ -61,24 +65,27 @@ public class ContactService implements IContactService {
         contactRepository.deleteById(id);
     }*/
 
-    public void addContact(String contactEmail, Principal principal){
-        Integer contactId = personRepository.findIdByEmail(contactEmail);
-        Person person = personRepository.findByEmail(principal.getName());
-        Integer personId = person.getIdPerson();
-        if (!contactEmail.equals(principal.getName())) {
-            logger.info("add contact successful");
+    @Override
+    public void addConnection(String contactEmail, Principal principal){
+        Person personUser = personRepository.findByEmail(principal.getName());
+        Person personToAdd = personRepository.findByEmail(contactEmail);
 
-            Contact contact = new Contact();
-            Person currentPerson = new Person();
-            Person personContact = new Person();
+        Integer personId = personUser.getIdPerson();
+        Integer contactId = personToAdd.getIdPerson();
 
-            personContact.setIdPerson(contactId);
-            currentPerson.setIdPerson(personId);
-            contact.setContact(personContact);
-            contact.setPerson(currentPerson);
-
-            contactRepository.save(contact);
+        if(contactId == null){
+            logger.info("Request add connection failed");
+            throw new NoUserFoundException(contactEmail);
         }
-        logger.info("add contact failed");
+        if(!Objects.equals(contactId, personId)){
+            logger.info("add connection successful");
+
+            Contact newContact = new Contact();
+            newContact.setContact(personToAdd);
+            newContact.setPerson(personUser);
+
+            contactRepository.save(newContact);
+        }
+        logger.info("add connection failed");
     }
 }

@@ -13,5 +13,5 @@ public interface IContactService {
     Contact getContactById(Integer id);
     Contact updateContact(Contact contact, Integer id);
     void deleteContact(Integer id);*/
-    void addContact(String contactEmail, Principal principal);
+    void addConnection(String contactEmail, Principal principal);
 }

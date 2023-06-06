@@ -66,9 +66,9 @@ public class ContactController {
         return "contact";
     }
 
-    @RequestMapping(value = "/contacts", method = RequestMethod.POST)
-    private String addContact(Model model, @ModelAttribute String contactEmail, Principal principal) {
-        contactService.addContact(contactEmail, principal);
-        return "redirect:/contacts/";
+    @RequestMapping(value = "/contacts/addConnection", method = RequestMethod.POST)
+    private String addConnection(@RequestParam(value = "email") String contactEmail, Principal principal){
+        contactService.addConnection(contactEmail, principal);
+        return "redirect:/transfers/";
     }
 }
