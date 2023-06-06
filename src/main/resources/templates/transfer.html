@@ -32,13 +32,38 @@
         </ul>
       </div>
     </div>
-    <div class="login">
-      <form class="form-signin" method="get" action="/add">
-        <button class="btn btn-primary btn-block" type="submit">add connection</button>
+    <div class="add_connection_button">
+      <form method="get" action="/add">
+        <button class="button_blue" type="submit">Add Connection</button>
       </form>
     </div>
-    <p>Send Money</p>
-    <!-- Add buttons create transaction -->
+    <div class="send_money">
+      <p>Send Money</p>
+      <div class="send_money_container">
+          <div class="list_contact">
+            <label>
+              <select>
+                <!-- A modifier -->
+                <option value="email_contact">test email
+                </option>
+              </select>
+            </label>
+          </div>
+        <div class="money_amount">
+          <form>
+            <label for="quantity">
+              <input type="number" id="quantity" name="quantity" min="1" max="3000">
+            </label>
+          </form>
+        </div>
+        <div class="pay_button">
+          <form method="" action="">
+            <button class="button_green" type="submit">Pay</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
 
     <p>My transactions</p>
     <table class="tab">
