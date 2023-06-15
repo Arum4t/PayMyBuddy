@@ -84,5 +84,10 @@ public class PersonService implements IPersonService {
     private void encodePassword( Person person, PersonData user){
         person.setPassword(passwordEncoder.encode(user.getPassword()));
     }
+
+    public Integer getPersonIdByEmail(String email){
+        Person person = personRepository.findByEmail(email);
+        return person.getIdPerson();
+    }
 }
 

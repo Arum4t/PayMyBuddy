@@ -9,15 +9,8 @@ import java.util.List;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Integer> {
-    // query exemple
-    // @Query("select id_person from person...")
-
     Person findByEmail(String email);
 
-    boolean existsByEmail(String email);
-
-    @Query("select id from Person where email = ?1")
-    Integer findIdByEmail(String contactEmail);
 }
 
 

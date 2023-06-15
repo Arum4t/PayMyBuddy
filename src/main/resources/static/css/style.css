@@ -141,7 +141,7 @@ label:hover:before {
 }
 .login-box-msg{
     color: grey;
-    font: bold;
+    font-weight: bold;
 }
 .link-login{
     text-decoration: none;

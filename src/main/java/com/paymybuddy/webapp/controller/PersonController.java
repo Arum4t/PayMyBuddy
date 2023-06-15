@@ -1,12 +1,16 @@
 package com.paymybuddy.webapp.controller;
 
 import com.paymybuddy.webapp.model.Person;
+import com.paymybuddy.webapp.model.Wallet;
 import com.paymybuddy.webapp.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -42,5 +46,13 @@ public class PersonController {
         personService.deletePerson(id_person);
         return new ResponseEntity<String>("Person deleted successfully!.", HttpStatus.OK);
     }
-
+    /*@GetMapping("/profiles")
+    public String currentPersonProfile(Model model, Principal principal){
+        Person person = personService.getPersonByEmail(principal.getName());
+        Integer personId = person.getIdPerson();
+        Wallet wallet = walletService.getWalletById(personId);
+        model.addAttribute("profile", person);
+        model.addAttribute("profileWallet", wallet);
+        return "profile";
+    }*/
 }

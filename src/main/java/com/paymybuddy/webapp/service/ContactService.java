@@ -4,8 +4,10 @@ package com.paymybuddy.webapp.service;
 import com.paymybuddy.webapp.exception.NoUserFoundException;
 import com.paymybuddy.webapp.model.Contact;
 import com.paymybuddy.webapp.model.Person;
+import com.paymybuddy.webapp.model.Transaction;
 import com.paymybuddy.webapp.repository.ContactRepository;
 import com.paymybuddy.webapp.repository.PersonRepository;
+import org.checkerframework.checker.units.qual.C;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,7 @@ import java.util.Objects;
 
 @Service
 @Transactional
-public class ContactService implements IContactService {
+public class    ContactService implements IContactService {
 
     private final Logger logger = LoggerFactory.getLogger(ContactService.class);
 
@@ -67,6 +69,7 @@ public class ContactService implements IContactService {
 
     @Override
     public void addConnection(String contactEmail, Principal principal){
+
         Person personUser = personRepository.findByEmail(principal.getName());
         Person personToAdd = personRepository.findByEmail(contactEmail);
 
@@ -87,5 +90,13 @@ public class ContactService implements IContactService {
             contactRepository.save(newContact);
         }
         logger.info("add connection failed");
+    }
+    public List<String> userContact(Integer userId){
+        List <Contact> userContacts = contactRepository.getAllContactFromUser(userId);
+        List<String> emailContacts = new ArrayList<>();
+        for(Contact contact : userContacts){
+            emailContacts.add(contact.getContact().getEmail());
+        }
+        return emailContacts;
     }
 }

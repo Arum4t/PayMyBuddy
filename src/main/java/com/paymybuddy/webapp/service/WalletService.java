@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -52,14 +51,31 @@ public class WalletService implements IWalletService{
        walletRepository.deleteById(id);
     }
 
-    public Wallet getCurrentPersonWallet(Principal principal){
-        Person person = personService.getPersonByEmail(principal.getName());
+    @Override
+    public Wallet getWalletByPersonId(Integer personId){
         List<Wallet> wallets = getAllWallet();
         for (Wallet wallet: wallets){
-            if(wallet.getIdPerson().getEmail().equals(person.getEmail())){
+            if(wallet.getIdPerson().getIdPerson().equals(personId)){
                 return wallet;
             }
         }
         return null;
     }
+    @Override
+    public Float addMoneyToWallet(Integer walletId, Float amount){
+        Wallet personWallet = getWalletById(walletId);
+        Float actualAmount = personWallet.getAmount();
+        float newAmount = actualAmount + amount;
+        personWallet.setAmount(newAmount);
+        return newAmount;
+    }
+    @Override
+    public Float removeMoneyToWallet(Integer walletId, Float amount){
+        Wallet personWallet = getWalletById(walletId);
+        Float actualAmount = personWallet.getAmount();
+        float newAmount = actualAmount - amount;
+        personWallet.setAmount(newAmount);
+        return newAmount;
+    }
+
 }

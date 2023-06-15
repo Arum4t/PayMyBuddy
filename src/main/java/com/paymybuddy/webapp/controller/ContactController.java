@@ -4,7 +4,9 @@ import com.paymybuddy.webapp.model.Contact;
 import com.paymybuddy.webapp.model.Person;
 import com.paymybuddy.webapp.service.ContactService;
 import com.paymybuddy.webapp.service.PersonService;
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -56,15 +58,6 @@ public class ContactController {
         model.addAttribute("errorMessage", errorMessage);
         return "redirect:/contacts/";
     }*/
-
-    @RequestMapping(value = "/contacts", method = RequestMethod.GET)
-    public String currentPersonContact(Model model, Principal principal){
-        Person person = personService.getPersonByEmail(principal.getName());
-        List<Contact> contacts = person.getContactList();
-        model.addAttribute("contacts", contacts);
-        model.addAttribute("contactInfo", new Contact());
-        return "contact";
-    }
 
     @RequestMapping(value = "/contacts/addConnection", method = RequestMethod.POST)
     private String addConnection(@RequestParam(value = "email") String contactEmail, Principal principal){

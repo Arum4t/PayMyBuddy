@@ -14,7 +14,7 @@ flex-direction: column;
 .home-content{
     font-size:3em;
     text-align: center;
-    font:bold;
+    font-weight:bold;
     color: gray;
 }
 .breadcrumb{

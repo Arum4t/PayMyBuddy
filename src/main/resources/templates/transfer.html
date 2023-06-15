@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html
-  xmlns:th="http://www.w3.org/1999/xhtml"
-  xmlns:form="http://www.w3.org/1999/html"
->
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/html">
+
   <head>
     <meta charset="utf-8" />
     <title>Pay My Buddy</title>
@@ -37,15 +35,15 @@
         <button class="button_blue" type="submit">Add Connection</button>
       </form>
     </div>
+
     <div class="send_money">
       <p>Send Money</p>
       <div class="send_money_container">
           <div class="list_contact">
-            <label>
-              <select>
-                <!-- A modifier -->
-                <option value="email_contact">test email
-                </option>
+            <label for="dropDownList">
+              <select class="form-control" id="dropDownList">
+                <option value="0">select Connection</option>
+                <option th:each="userContact : ${userContactList}" th:value="${userContact}" th:text="${userContact}"></option>
               </select>
             </label>
           </div>
@@ -57,24 +55,23 @@
           </form>
         </div>
         <div class="pay_button">
-          <form method="" action="">
+          <form>
             <button class="button_green" type="submit">Pay</button>
           </form>
         </div>
       </div>
     </div>
+   <div class="user_transactions">
+      <tr th:each="userTransaction: ${userTransactionList}">
+        <td th:text="${userTransaction}"></td>
+      </tr>
+    </div>
 
 
-    <p>My transactions</p>
-    <table class="tab">
-      <tr>
-        <td>Type</td>
-        <td>Amount</td>
-      </tr>
-      <tr th:each="transaction : ${transactions}">
-        <td th:text="${transaction.type}"></td>
-        <td th:text="${transaction.amount_transaction}"></td>
-      </tr>
-    </table>
+
+
+
+
+
   </body>
 </html>

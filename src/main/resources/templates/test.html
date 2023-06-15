@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Pay My Buddy</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/style-home.css">
+</head>
+
+<body>
+<div class="header">
+  <h1 class="title">Pay My Buddy</h1>
+
+  <div class="menu">
+    <ul class="menu_ul">
+      <li class="menu_li"><a href="/home">Home</a></li>
+      <li class="menu_li"><a href="/transfers">Transfer</a></li>
+      <li class="menu_li"><a href="/profiles">Profile</a></li>
+      <li class="menu_li"><a href="/add">Contact</a></li>
+      <li class="menu_li"><a href="/logout">Log off</a></li>
+    </ul>
+  </div>
+</div>
+<div class="content_breadcrumb">
+  <div class="breadcrumb">
+    <ul class="breadcrumb_ul">
+      <li class="breadcrumb_li">Home</li>
+      <li class="breadcrumb_li">/</li>
+      <li class="breadcrumb_li_actual">Transfer</li>
+    </ul>
+  </div>
+</div>
+
+
+<table>
+  <thead>
+  <tr>
+    <th> Connection </th>
+    <th> Description </th>
+    <th> Amount </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="userTransactionList : ${userTransaction}">
+    <td><span th:text="${userTransactionList.description}"> Description </span></td>
+    <td><span th:text="${userTransactionList.amount}"> Amount </span></td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+
+<div class="user_transactions">
+  <tr th:each="userTransaction: ${userTransactionList}">
+    <td th:text="${userTransaction}"></td>
+  </tr>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

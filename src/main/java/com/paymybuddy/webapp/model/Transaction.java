@@ -23,7 +23,6 @@ public class Transaction {
     @Column(name = "amount_transaction", nullable = false)
     private float amount;
 
-
     @ManyToOne
     @JoinColumn(name = "id_wallet_emitter")
     @JsonBackReference
