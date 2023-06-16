@@ -25,7 +25,8 @@ CREATE TABLE `contacts`
 	`id_contact` INTEGER NOT NULL,
 	PRIMARY KEY (`id`),
     FOREIGN KEY (`id_person`) REFERENCES `Person`(`id_person`),
-    FOREIGN KEY (`id_contact`) REFERENCES `Person`(`id_person`)
+    FOREIGN KEY (`id_contact`) REFERENCES `Person`(`id_person`),
+    UNIQUE (`id_person`, `id_contact`)
 );
 
 INSERT INTO `contacts` (`id`, `id_person`, `id_contact`)
@@ -48,8 +49,8 @@ INSERT INTO `Wallet` (`id_wallet`, `id_person`, `amount_wallet`)
 
 VALUES
 (1, 1, 500),
-(2, 2, 1000),
-(3, 3, 20000);
+(2, 3, 1000),
+(3, 2, 20000);
 
 
 DROP TABLE IF EXISTS `Transaction`;

@@ -12,7 +12,8 @@ import java.util.List;
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
 
     @Query("SELECT t FROM Transaction t WHERE t.walletEmitter.idWallet = ?1")
-    List<Transaction> getTransactionByWalletId (Integer walletId);
+    List<Transaction> getTransactionMadeByWalletId (Integer walletId);
 
-    // la même avec receiver
+    @Query("SELECT t FROM Transaction t WHERE t.walletReceiver.idWallet = ?1")
+    List<Transaction> getTransactionReceivedByWalletId (Integer walletId);
 }

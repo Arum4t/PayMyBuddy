@@ -50,12 +50,15 @@ public class TemplateController {
     @GetMapping("/transfers")
     public String getTransferView(Model model, Principal principal){
         Integer personId = personService.getPersonIdByEmail(principal.getName());
+        Integer walletId = walletService.getWalletByPersonId(personId).getIdWallet();
 
         List<String> userContacts = contactService.userContact(personId);
-//        List<TransactionData> userTransactions = transactionService.userTransaction(personId);
+        List<TransactionData> transactionMade = transactionService.userTransactionMade(walletId);
+        List<TransactionData> transactionReceived = transactionService.userTransactionReceived(walletId);
 
         model.addAttribute("userContactList", userContacts);
-//        model.addAttribute("userTransactionList", userTransactions);
+        model.addAttribute("transactionMadeList", transactionMade);
+        model.addAttribute("transactionReceivedList", transactionReceived);
         return "transfer";
     }
 }

@@ -49,8 +49,8 @@ public class TransactionService implements ITransactionService {
     }
 
     @Override
-    public void sendMoneyToConnection(String contactEmail, Float amount, Principal principal) {
-        Person personUser = personRepository.findByEmail(principal.getName());
+    public void sendMoneyToConnection(String contactEmail, String userEmail, Float amount, String description) {
+        Person personUser = personRepository.findByEmail(userEmail);
         Person personToAdd = personRepository.findByEmail(contactEmail);
         Integer personId = personUser.getIdPerson();
         Integer contactId = personToAdd.getIdPerson();
@@ -66,7 +66,7 @@ public class TransactionService implements ITransactionService {
             newTransaction.setAmount(amount);
             newTransaction.setWalletEmitter(userWallet);
             newTransaction.setWalletReceiver(contactWallet);
-            newTransaction.setDescription("new transaction");
+            newTransaction.setDescription(description);
 
             transactionRepository.save(newTransaction);
             logger.info("Money send to connection with success");
@@ -74,10 +74,32 @@ public class TransactionService implements ITransactionService {
         logger.info("Amount need to be above O");
     }
 
-    // userTransactionDone
-    public List<Transaction> userTransaction(Integer walletId){
-        return transactionRepository.getTransactionByWalletId(walletId);
-    }
+    public List<TransactionData> userTransactionMade(Integer walletId){
+        List<TransactionData> transactionMade = new ArrayList<>();
 
-    //userTransactionReceive
+        List<Transaction> transactions = transactionRepository.getTransactionMadeByWalletId(walletId);
+
+        for(Transaction transaction : transactions){
+            TransactionData oneTransaction = new TransactionData();
+            oneTransaction.setDescription(transaction.getDescription());
+            oneTransaction.setAmount(transaction.getAmount());
+            oneTransaction.setReceiverEmail(transaction.getWalletReceiver().getIdPerson().getEmail());
+            transactionMade.add(oneTransaction);
+        }
+        return transactionMade;
+    }
+    public List<TransactionData> userTransactionReceived(Integer walletId){
+        List<TransactionData> transactionReceived = new ArrayList<>();
+
+        List<Transaction> transactions = transactionRepository.getTransactionReceivedByWalletId(walletId);
+
+        for(Transaction transaction : transactions){
+            TransactionData oneTransaction = new TransactionData();
+            oneTransaction.setDescription(transaction.getDescription());
+            oneTransaction.setAmount(transaction.getAmount());
+            oneTransaction.setReceiverEmail(transaction.getWalletEmitter().getIdPerson().getEmail());
+            transactionReceived.add(oneTransaction);
+        }
+        return transactionReceived;
+    }
 }

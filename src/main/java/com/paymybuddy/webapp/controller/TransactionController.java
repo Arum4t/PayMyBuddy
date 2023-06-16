@@ -42,18 +42,8 @@ public class TransactionController {
     }
 
     @RequestMapping(value = "/transactions/pay", method = RequestMethod.POST)
-    private String sendMoney(@RequestParam String contactEmail, Float amount, Principal principal){
-        transactionService.sendMoneyToConnection(contactEmail, amount, principal);
+    private String sendMoney(@RequestParam String contactEmail, Principal principal, Float amount, String description){
+        transactionService.sendMoneyToConnection(contactEmail,principal.getName(), amount, description);
         return "redirect:/transactions/";
-    }
-
-    // test liste de transaction
-    @GetMapping("/test_transaction")
-    public String userTransaction(Model model, Principal principal){
-        Integer personId = personService.getPersonIdByEmail(principal.getName());
-        Integer walletId = walletService.getWalletByPersonId(personId).getIdWallet();
-        List<Transaction> userTransactions = transactionService.userTransaction(walletId);
-        model.addAttribute("userTransaction", userTransactions);
-        return "test";
     }
 }

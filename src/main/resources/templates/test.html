@@ -35,32 +35,19 @@
 <table>
   <thead>
   <tr>
-    <th> Connection </th>
     <th> Description </th>
     <th> Amount </th>
+    <th> Connection </th>
   </tr>
   </thead>
   <tbody>
   <tr th:each="userTransactionList : ${userTransaction}">
     <td><span th:text="${userTransactionList.description}"> Description </span></td>
     <td><span th:text="${userTransactionList.amount}"> Amount </span></td>
+    <td><span th:text="${userTransactionList.receiverEmail}"> Email </span></td>
   </tr>
   </tbody>
 </table>
-
-
-
-
-<div class="user_transactions">
-  <tr th:each="userTransaction: ${userTransactionList}">
-    <td th:text="${userTransaction}"></td>
-  </tr>
-</div>
-
-
-
-
-
 
 
 </body>

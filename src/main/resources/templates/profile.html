@@ -34,11 +34,21 @@
 
 <p>Email: </p>
 <div th:text="${profile.email}"> Email </div>
-<p>Account: </p>
-<div th:text="${profileWallet.account}"> WalletAccount </div>
+<p>Password : </p>
+<div th:text="${profile.password}"> Email </div>
+
 <p>Balance: </p>
 <div th:text="${profileWallet.amount_wallet}"> WalletAmount </div>
-<!-- add change email button -->
+
+
+<!--balises form avec controller update email-->
+<div class="update_email">
+    <label for="update_email"></label><input type="text" id="update_email" name="update_email" placeholder="change_email" required>
+</div>
+<!--balises form avec controller update password -->
+<div class="update_password">
+    <label for="update_password"></label><input type="text" id="update_password" name="update_password" placeholder="change_password" required>
+</div>
 
 </body>
 </html>
