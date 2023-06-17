@@ -42,8 +42,8 @@ public class TransactionController {
     }
 
     @RequestMapping(value = "/transactions/pay", method = RequestMethod.POST)
-    private String sendMoney(@RequestParam String contactEmail, Principal principal, Float amount, String description){
+    private String sendMoney(@RequestParam String contactEmail, @RequestParam Float amount, @RequestParam String description, Principal principal){
         transactionService.sendMoneyToConnection(contactEmail,principal.getName(), amount, description);
-        return "redirect:/transactions/";
+        return "redirect:/transfers/";
     }
 }

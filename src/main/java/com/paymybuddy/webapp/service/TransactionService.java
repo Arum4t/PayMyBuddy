@@ -30,7 +30,7 @@ public class TransactionService implements ITransactionService {
     private PersonRepository personRepository;
 
     @Autowired
-    private WalletRepository walletRepository;
+    private WalletService walletService;
 
     @Override
     public List<Transaction> getAllTransactions() {
@@ -55,7 +55,6 @@ public class TransactionService implements ITransactionService {
         Integer personId = personUser.getIdPerson();
         Integer contactId = personToAdd.getIdPerson();
 
-        WalletService walletService = new WalletService();
         Wallet userWallet = walletService.getWalletByPersonId(personId);
         Wallet contactWallet = walletService.getWalletByPersonId(contactId);
 

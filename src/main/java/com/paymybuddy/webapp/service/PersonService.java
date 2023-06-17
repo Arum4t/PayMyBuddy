@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PersonService implements IPersonService {
@@ -53,7 +54,6 @@ public class PersonService implements IPersonService {
         personRepository.save(existingPerson);
         return existingPerson;
     }
-
     @Override
     public void deletePerson(Integer id) {
         //Check Person exist in DB or not
@@ -70,12 +70,9 @@ public class PersonService implements IPersonService {
         Person person = new Person();
         BeanUtils.copyProperties(personData, person);
         encodePassword(person, personData);
+        person.setRole("user");
         personRepository.save(person);
-
-        // TODO : Ajouter un role spring security par défaut ici ?
     }
-
-
     @Override
     public boolean checkIfUserExist(String email) {
         return personRepository.findByEmail(email) != null;
@@ -88,6 +85,18 @@ public class PersonService implements IPersonService {
     public Integer getPersonIdByEmail(String email){
         Person person = personRepository.findByEmail(email);
         return person.getIdPerson();
+    }
+    public void updateEmailUser(String email,Integer userId){
+        Person user = personRepository.findById(userId).orElseThrow(
+                ()-> new ResourceNotFoundException("Person", "Id", userId)
+        );
+        if(!Objects.equals(email, user.getEmail())){
+            user.setEmail(email);
+            personRepository.save(user);
+        }
+    }
+    public void updatePasswordUser(String password, Integer userId){
+        personRepository.findAll();
     }
 }
 

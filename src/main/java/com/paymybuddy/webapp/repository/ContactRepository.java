@@ -13,7 +13,6 @@ import java.util.List;
 
 @Repository
 public interface ContactRepository extends JpaRepository<Contact, Integer> {
-
     @Query("SELECT c FROM Contact c WHERE c.person.idPerson = ?1")
     List<Contact> getAllContactFromUser(Integer personId);
 }

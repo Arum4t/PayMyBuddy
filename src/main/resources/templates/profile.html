@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <title>Pay My Buddy</title>
     <link rel="stylesheet" type="text/css" href="../static/css/style-home.css">
+    <script src="../static/js/paymybuddy.js"></script>
 </head>
+
 <body>
 <div class="header">
 
@@ -35,20 +37,26 @@
 <p>Email: </p>
 <div th:text="${profile.email}"> Email </div>
 <p>Password : </p>
-<div th:text="${profile.password}"> Email </div>
+<div th:text="${profile.password}" type="password" id="password_field"> Password</div>
 
 <p>Balance: </p>
-<div th:text="${profileWallet.amount_wallet}"> WalletAmount </div>
+<div th:text="${profileWallet.amount}"> WalletAmount </div>
 
-
-<!--balises form avec controller update email-->
+<form th:action="@{/persons/email}" method="post">
 <div class="update_email">
-    <label for="update_email"></label><input type="text" id="update_email" name="update_email" placeholder="change_email" required>
+    <label for="update_email"></label>
+    <input type="text" name="update_email" class="form-control" id="update_email" placeholder="change your email" required>
+    <button class="button_green" type="submit">Save change</button>
 </div>
-<!--balises form avec controller update password -->
+</form>
+
+<form>
 <div class="update_password">
-    <label for="update_password"></label><input type="text" id="update_password" name="update_password" placeholder="change_password" required>
+    <label for="update_password"></label>
+    <input type="text" id="update_password" name="update_password" placeholder="change your password" required>
+    <button class="button_green" type="submit">Save change</button>
 </div>
+</form>
 
 </body>
 </html>
