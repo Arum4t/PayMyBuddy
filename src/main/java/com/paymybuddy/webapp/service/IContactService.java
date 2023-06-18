@@ -8,10 +8,6 @@ import java.security.Principal;
 import java.util.List;
 
 public interface IContactService {
-    /*Contact saveFriend(Contact contact);
-    List<Contact> getAllContact();
-    Contact getContactById(Integer id);
-    Contact updateContact(Contact contact, Integer id);
-    void deleteContact(Integer id);*/
     void addConnection(String contactEmail, Principal principal);
+    List<String> userContact(Integer userId);
 }

@@ -16,41 +16,15 @@ public class WalletService implements IWalletService{
     @Autowired
     private WalletRepository walletRepository;
 
-    @Autowired
-    private PersonService personService;
-
-    @Override
-    public Wallet saveWallet(Wallet wallet) {
-        return walletRepository.save(wallet);
-    }
-
     @Override
     public List<Wallet> getAllWallet() {
         return walletRepository.findAll();
     }
-
     @Override
     public Wallet getWalletById(Integer id) {
         return walletRepository.findById(id).orElseThrow(
                 ()-> new ResourceNotFoundException("Wallet", "Id", id));
     }
-
-    @Override
-    public Wallet updateWallet(Wallet wallet, Integer id) {
-        Wallet existingWallet = walletRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("Wallet", "Id", id));
-        existingWallet.setAmount(wallet.getAmount());
-        walletRepository.save(existingWallet);
-        return existingWallet;
-    }
-
-    @Override
-    public void deleteWallet(Integer id) {
-       walletRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("Wallet", "Id", id));
-       walletRepository.deleteById(id);
-    }
-
     @Override
     public Wallet getWalletByPersonId(Integer personId){
         List<Wallet> wallets = getAllWallet();

@@ -33,40 +33,6 @@ public class    ContactService implements IContactService {
     @Autowired
     private PersonRepository personRepository;
 
-    public List<Contact> getAllContact() {
-        return contactRepository.findAll();
-    }
-
-    public Contact saveContact(Contact contact) {
-        return contactRepository.save(contact);
-    }
-
-/*
-    @Override
-    public Contact getContactById(Integer id) {
-        return friendRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("Contact", "Id", id));
-    }
-
-    @Override
-    public Contact updateContact(Contact contact, Integer id) {
-        //Check friend exist in DB or not
-        Contact existingContact = contactRepository.findById(id).orElseThrow(
-            ()-> new ResourceNotFoundException("Contact", "Id", id));
-        existingContact.setEmail(contact.getEmail());
-        // Save existing Friend to DB
-        contactRepository.save(existingContact);
-        return existingFriend;
-    }
-
-    @Override
-    public void deleteContact(Integer id) {
-        //Check friend exist in DB or not
-        contactRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("Contact", "Id", id));
-        contactRepository.deleteById(id);
-    }*/
-
     @Override
     public void addConnection(String contactEmail, Principal principal){
 
@@ -91,6 +57,7 @@ public class    ContactService implements IContactService {
         }
         logger.info("add connection failed");
     }
+    @Override
     public List<String> userContact(Integer userId){
         List <Contact> userContacts = contactRepository.getAllContactFromUser(userId);
         List<String> emailContacts = new ArrayList<>();

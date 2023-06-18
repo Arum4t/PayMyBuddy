@@ -6,12 +6,11 @@ import com.paymybuddy.webapp.model.specific.PersonData;
 import java.util.List;
 
 public interface IPersonService {
-    Person savePerson(Person person);
-    List<Person> getAllPersons();
-    Person getPersonById(Integer id);
     Person getPersonByEmail(String email);
-    Person updatePerson(Person person, Integer id);
-    void deletePerson(Integer id);
     void register(PersonData user) throws Exception;
     boolean checkIfUserExist(String email);
+    void encodePassword( Person person, PersonData user);
+    Integer getPersonIdByEmail(String email);
+    void updateEmailUser(String email,Integer userId);
+    void updatePasswordUser(String password, Integer userId);
 }

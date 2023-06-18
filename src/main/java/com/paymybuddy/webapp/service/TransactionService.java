@@ -33,22 +33,6 @@ public class TransactionService implements ITransactionService {
     private WalletService walletService;
 
     @Override
-    public List<Transaction> getAllTransactions() {
-        return transactionRepository.findAll();
-    }
-
-    @Override
-    public Transaction getTransactionById(Integer id) {
-        return transactionRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("Transaction", "Id", id));
-    }
-    @Override
-    public List<Transaction> getTransactionByWalletId(Integer id_wallet) {
-       // return transactionRepository.findByWalletId(id_wallet);
-        return null;
-    }
-
-    @Override
     public void sendMoneyToConnection(String contactEmail, String userEmail, Float amount, String description) {
         Person personUser = personRepository.findByEmail(userEmail);
         Person personToAdd = personRepository.findByEmail(contactEmail);

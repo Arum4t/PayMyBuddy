@@ -2,8 +2,10 @@ package com.paymybuddy.webapp.service;
 
 import com.paymybuddy.webapp.exception.ResourceNotFoundException;
 import com.paymybuddy.webapp.model.Person;
+import com.paymybuddy.webapp.model.Wallet;
 import com.paymybuddy.webapp.model.specific.PersonData;
 import com.paymybuddy.webapp.repository.PersonRepository;
+import com.paymybuddy.webapp.repository.WalletRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,48 +21,16 @@ public class PersonService implements IPersonService {
     private PersonRepository personRepository;
 
     @Autowired
+    private WalletRepository walletRepository;
+
+    @Autowired
     PasswordEncoder passwordEncoder;
 
-    @Override
-    public Person savePerson(Person person) {
-        return personRepository.save(person);
-    }
-    @Override
-    public List<Person> getAllPersons() {
-        return personRepository.findAll();
-    }
-
-    @Override
-    public Person getPersonById(Integer id) {
-        return personRepository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Person", "Id", id));
-    }
     @Override
     public Person getPersonByEmail(String email) {
         return personRepository.findByEmail(email);
     }
 
-    @Override
-    public Person updatePerson(Person person, Integer id) {
-        // Check personId exist in DB or not
-        Person existingPerson = personRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("Person", "Id", id)
-        );
-
-        existingPerson.setEmail(person.getEmail());
-        existingPerson.setPassword(person.getPassword());
-
-        // Save existing Person to DB
-        personRepository.save(existingPerson);
-        return existingPerson;
-    }
-    @Override
-    public void deletePerson(Integer id) {
-        //Check Person exist in DB or not
-        personRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("Person", "Id", id));
-        personRepository.deleteById(id);
-    }
     @Override
     public void register(PersonData personData) throws Exception {
 
@@ -72,20 +42,25 @@ public class PersonService implements IPersonService {
         encodePassword(person, personData);
         person.setRole("user");
         personRepository.save(person);
+        Wallet wallet = new Wallet();
+        wallet.setAmount(0);
+        wallet.setIdPerson(person);
+        walletRepository.save(wallet);
     }
     @Override
     public boolean checkIfUserExist(String email) {
         return personRepository.findByEmail(email) != null;
     }
-
-    private void encodePassword( Person person, PersonData user){
+    @Override
+    public void encodePassword( Person person, PersonData user){
         person.setPassword(passwordEncoder.encode(user.getPassword()));
     }
-
+    @Override
     public Integer getPersonIdByEmail(String email){
         Person person = personRepository.findByEmail(email);
         return person.getIdPerson();
     }
+    @Override
     public void updateEmailUser(String email,Integer userId){
         Person user = personRepository.findById(userId).orElseThrow(
                 ()-> new ResourceNotFoundException("Person", "Id", userId)
@@ -95,8 +70,15 @@ public class PersonService implements IPersonService {
             personRepository.save(user);
         }
     }
+    @Override
     public void updatePasswordUser(String password, Integer userId){
-        personRepository.findAll();
+        Person user = personRepository.findById(userId).orElseThrow(
+                ()-> new ResourceNotFoundException("Person", "Id", userId)
+        );
+        if(!Objects.equals(password, user.getEmail())){
+            user.setPassword(password);
+            personRepository.save(user);
+        }
     }
 }
 
