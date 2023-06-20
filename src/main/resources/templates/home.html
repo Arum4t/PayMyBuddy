@@ -1,41 +1,60 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/html" lang="fr">
 <head>
     <meta charset="utf-8">
     <title>Pay My Buddy</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
 <div class="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/home"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
-                    <a class="nav-link" href="/transfers">Transfer</a>
-                    <a class="nav-link" href="/profiles">Profile</a>
-                    <a class="nav-link" href="/add">Contact</a>
-                    <a class="nav-link" href="/logout">Log off</a>
-                </div>
-            </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+        <a class="navbar-brand title_home fw-bold rounded text-white" href="/home">Pay My Buddy</a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="#"></a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-primary fw-bold" href="/home">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/transfers">Transfer</a>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/profiles">Profile</a>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/add">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/logout">Log off</a>
+                </li>
+            </ul>
         </div>
     </nav>
+
 </div>
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Home</li>
+        <li class="breadcrumb-item active text-primary ml-2" aria-current="page">Home</li>
     </ol>
 </nav>
 
-<p class="home-content">Welcome in Pay my Buddy application !</p>
+<p class="home-content text-center">Welcome to Pay my Buddy application !</p>
 
 </body>
 </html>

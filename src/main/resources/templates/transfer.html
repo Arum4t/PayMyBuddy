@@ -4,65 +4,75 @@
   <head>
     <meta charset="utf-8" />
     <title>Pay My Buddy</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
 
   <body>
   <div class="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/home">PayMyBuddy</a>
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-link" aria-current="page" href="/home">Home</a>
-            <a class="nav-link active" href="/transfers">Transfer</a>
-            <a class="nav-link" href="/profiles">Profile</a>
-            <a class="nav-link" href="/add">Contact</a>
-            <a class="nav-link" href="/logout">Log off</a>
-          </div>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+      <a class="navbar-brand title_home fw-bold rounded text-white" href="/home">Pay My Buddy</a>
+      <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarTogglerDemo01"
+              aria-controls="navbarTogglerDemo01"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#"></a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/home">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-primary fw-bold" href="/transfers">Transfer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/profiles">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/add">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/logout">Log off</a>
+          </li>
+        </ul>
       </div>
     </nav>
   </div>
 
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+        <li class="breadcrumb-item ml-2"><a href="/home">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Transfer</li>
       </ol>
     </nav>
 
-
-
-    <div class="send_money d-flex justify-content-around">
-      <div class="p-2"><p>Send Money</p></div>
-      <div class="add_connection_button p-2">
-        <form method="get" action="/add">
-          <button class="btn btn-primary" type="submit">Add Connection</button>
-        </form>
-      </div>
+<div class="send_money_box_connection">
+  <div class="send_money d-flex justify-content-between align-items-center">
+    <div class="p-2">Send Money</div>
+    <div class="add_connection_button p-2">
+      <form method="get" action="/add">
+        <button class="btn btn-primary" type="submit">Add Connection</button>
+      </form>
     </div>
-      <div class="container bg-light d-flex p-2 justify-content-center">
+  </div>
+</div>
+
+  <div class="send_money_box bg-light">
+      <div class="d-flex p-2 justify-content-center">
         <form method="post" th:action="@{/transactions/pay}">
 
           <div class="d-inline-flex p-2">
             <label for="dropDownList"></label>
             <select class="form-control" id="dropDownList" name="contactEmail">
-                  <option value="0">select Connection</option>
+                  <option value="0">select a Connection</option>
                   <option th:each="userContact : ${userContactList}" th:value="${userContact}" th:text="${userContact}"></option>
               </select>
           </div>
@@ -81,14 +91,15 @@
 
         </form>
       </div>
+  </div>
 
 
-<div class="d-flex flex-row">
+<div class="d-flex flex-row pt-5">
    <div class="container">
-       <table class="table table-striped">
+       <table class="table table-striped table-bordered">
          <p>Transaction made</p>
          <thead>
-         <tr class="table-success text-center">
+         <tr class="table_header text-center">
            <th> Connection </th>
            <th> Description </th>
            <th> Amount </th>
@@ -104,10 +115,10 @@
        </table>
    </div>
   <div class="container">
-     <table class="table table-striped">
+     <table class="table table-striped table-bordered">
        <p>Transaction received</p>
        <thead>
-       <tr class="table-success text-center">
+       <tr class="table_header text-center">
          <th> Connection </th>
          <th> Description </th>
          <th> Amount </th>

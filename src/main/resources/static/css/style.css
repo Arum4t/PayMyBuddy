@@ -1,10 +1,80 @@
+
+/*index.html*/
 .gradient-custom {
     /* fallback for old browsers */
-    background: #6a11cb;
+    background: white;
+}
+.title_index{
+    background:linear-gradient(90deg, #66BB57 0%, #8AC34A 100%);
+    width: 250px;
+}
+/*home.html*/
+.title_home{
+    background:linear-gradient(90deg, #66BB57 0%, #8AC34A 100%);
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.profile_title_balance{
+    background:linear-gradient(90deg, #66BB57 0%, #8AC34A 100%);
+    width: auto;
+    margin:auto;
+    padding: 5px 10px;
+}
+.profile_title_email{
+    background:linear-gradient(90deg, #66BB57 0%, #8AC34A 100%);
+    width: auto;
+    margin:auto;
+    padding: 5px 10px;
 
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+}
+.nav-link{
+    font-weight: bold;
+}
+.home-content{
+    font-size: xx-large;
+    font-weight: bold;
+    padding-top: 100px;
+}
+.navbar_container{
+    display: flex;
 
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
+.send_money_box{
+    max-width: 800px;
+    height: 100px;
+    margin: auto;
+    padding-top: 15px;
+}
+.send_money_box_connection{
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: -50px;
+}
+.send_money{
+    margin-bottom: 50px;
+}
+/*profile*/
+.profile_information{
+    max-width: 250px;
+    margin: auto;
+}
+.profile_box{
+    max-width: 500px;
+    margin: auto;
+    padding-top:10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+.input_icon.btn-outline-secondary:hover{
+    color: black;
+}
+.profile_advertise{
+    color: grey;
+    font-size: 1em;
+    padding-top: 10px;
+}
+/*transfer*/
+.table_header{
+    background:linear-gradient(90deg, #66BB57 0%, #8AC34A 100%);
 }
