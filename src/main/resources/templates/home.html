@@ -3,35 +3,39 @@
 <head>
     <meta charset="utf-8">
     <title>Pay My Buddy</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/style-home.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
 <div class="header">
-
-        <h1 class="title"> Pay My Buddy </h1>
-
-    <div class="menu">
-        <ul class="menu_ul">
-            <li class="menu_li"><a href="/home">Home</a></li>
-            <li class="menu_li"><a href="/transfers">Transfer</a></li>
-            <li class="menu_li"><a href="/profiles">Profile</a></li>
-            <li class="menu_li"><a href="/add">Contact</a></li>
-            <li class="menu_li"><a href="/logout">Log off</a></li>
-        </ul>
-    </div>
-</div>
-<div class="content_breadcrumb">
-    <div class="breadcrumb">
-        <ul class="breadcrumb_ul">
-            <li class="breadcrumb_li_actual">Home /</li>
-        </ul>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/home"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    <a class="nav-link" href="/transfers">Transfer</a>
+                    <a class="nav-link" href="/profiles">Profile</a>
+                    <a class="nav-link" href="/add">Contact</a>
+                    <a class="nav-link" href="/logout">Log off</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 </div>
 
-<p class="home-content">
-    Hello ! Welcome in Pay my Buddy application !
-</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Home</li>
+    </ol>
+</nav>
+
+<p class="home-content">Welcome in Pay my Buddy application !</p>
 
 </body>
 </html>

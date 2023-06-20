@@ -61,22 +61,22 @@ public class PersonService implements IPersonService {
         return person.getIdPerson();
     }
     @Override
-    public void updateEmailUser(String email,Integer userId){
+    public void updateEmailUser(String newEmail,Integer userId){
         Person user = personRepository.findById(userId).orElseThrow(
                 ()-> new ResourceNotFoundException("Person", "Id", userId)
         );
-        if(!Objects.equals(email, user.getEmail())){
-            user.setEmail(email);
+        if(!Objects.equals(newEmail, user.getEmail())){
+            user.setEmail(newEmail);
             personRepository.save(user);
         }
     }
     @Override
-    public void updatePasswordUser(String password, Integer userId){
+    public void updatePasswordUser(String newPassword, Integer userId){
         Person user = personRepository.findById(userId).orElseThrow(
                 ()-> new ResourceNotFoundException("Person", "Id", userId)
         );
-        if(!Objects.equals(password, user.getEmail())){
-            user.setPassword(password);
+        if(!Objects.equals(newPassword, user.getEmail())){
+            user.setPassword(passwordEncoder.encode(newPassword));
             personRepository.save(user);
         }
     }
