@@ -36,7 +36,7 @@
                     <a class="nav-link active text-primary fw-bold" href="/profiles">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="/add">Contact</a>
+                    <a class="nav-link text-dark" href="/contacts/add">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="/logout">Log off</a>
@@ -74,6 +74,12 @@
             </form>
             <div class="balance_profile mt-4">
               <p class="text-dark fw-bold">Your current balance</p><div class="pl-2 profile_title_balance fw-bold rounded text-white" th:text="${profileWallet.amount}"></div>
+                <div class="test">
+                    <form th:action="@{/wallet/addMoney}" method="post">
+                    <label for="quantity"></label><input class="add_money_balance text-center form-control mb-3" type="number" id="quantity" name="amount" min="1" max="3000" required>
+                    <label for="btn-submit"></label><button id="btn-submit" class="btn btn-primary" type="submit">Add money to your account</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

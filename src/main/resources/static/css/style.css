@@ -74,6 +74,10 @@
     font-size: 1em;
     padding-top: 10px;
 }
+.add_money_balance{
+    max-width: 100px;
+    margin:auto;
+}
 /*transfer*/
 .table_header{
     background:linear-gradient(90deg, #66BB57 0%, #8AC34A 100%);

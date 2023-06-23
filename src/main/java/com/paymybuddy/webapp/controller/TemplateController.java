@@ -34,7 +34,6 @@ public class TemplateController {
     @Autowired
     private WalletService walletService;
 
-
     @GetMapping("/login")
     public String getLoginView(){
         return "login";
@@ -42,10 +41,6 @@ public class TemplateController {
     @GetMapping("/home")
     public String getHomeView(){
         return "home";
-    }
-    @GetMapping("/add")
-    public String getAddConnectionView(){
-        return "addConnection";
     }
     @GetMapping("/transfers")
     public String getTransferView(Model model, Principal principal){

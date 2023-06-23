@@ -11,5 +11,6 @@ public interface IWalletService {
     Float removeMoneyToWallet(Integer walletId, Float amount);
     Float addMoneyToWallet(Integer walletId, Float amount);
     Wallet getWalletByPersonId(Integer personId);
+    void addMoneyToWallet(String userEmail, Float amount);
 
 }

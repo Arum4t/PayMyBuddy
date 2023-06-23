@@ -1,6 +1,6 @@
 package com.paymybuddy.webapp.exception;
 
-public class NoUserFoundException extends RuntimeException {
+public class NoUserFoundException extends Exception {
 
     private final String email;
 

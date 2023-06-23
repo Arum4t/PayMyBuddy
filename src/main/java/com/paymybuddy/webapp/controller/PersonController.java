@@ -28,15 +28,7 @@ public class PersonController {
     @Autowired
     private WalletService walletService;
 
-    @GetMapping("/profiles")
-    public String currentPersonProfile(Model model, Principal principal){
-        Person person = personService.getPersonByEmail(principal.getName());
-        Integer personId = personService.getPersonIdByEmail(principal.getName());
-        Wallet wallet = walletService.getWalletById(personId);
-        model.addAttribute("profile", person);
-        model.addAttribute("profileWallet", wallet);
-        return "profile";
-    }
+
     @RequestMapping(value = "/persons/email", method = RequestMethod.POST)
     private String updateUserEmail(@RequestParam String newEmail, Principal principal){
         Integer userId = personService.getPersonIdByEmail(principal.getName());

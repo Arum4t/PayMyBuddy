@@ -27,7 +27,9 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String userRegistration(final @Valid  PersonData personData, final BindingResult bindingResult, final Model model){
+    public String userRegistration(final @Valid  PersonData personData,
+                                   final BindingResult bindingResult,
+                                   final Model model){
         if(bindingResult.hasErrors()){
             model.addAttribute("registrationForm", personData);
             return "register";
@@ -35,7 +37,9 @@ public class RegistrationController {
         try {
             personService.register(personData);
         }catch (Exception e){
-            bindingResult.rejectValue("email", "personData.email","An account already exists for this email.");
+            bindingResult.rejectValue("email",
+                    "personData.email",
+                    "An account already exists for this email.");
             model.addAttribute("registrationForm", personData);
             return "register";
         }

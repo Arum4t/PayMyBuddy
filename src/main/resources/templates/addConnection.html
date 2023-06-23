@@ -38,7 +38,7 @@
                     <a class="nav-link text-dark" href="/profiles">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active text-primary fw-bold" href="/add">Contact</a>
+                    <a class="nav-link active text-primary fw-bold" href="/contacts/add">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="/logout">Log off</a>
@@ -54,6 +54,10 @@
         <li class="breadcrumb-item active" aria-current="page">Contact</li>
     </ol>
 </nav>
+
+    <div class="alert alert-danger text-center" th:if="${errorMsg}">
+        <div th:text="${errorMsg}"></div>
+    </div>
 
 <div class="d-flex flex-row justify-content-center">
 <form method="post" th:action="@{/contacts/addConnection}">

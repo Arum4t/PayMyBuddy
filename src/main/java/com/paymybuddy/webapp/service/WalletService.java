@@ -2,8 +2,12 @@ package com.paymybuddy.webapp.service;
 
 import com.paymybuddy.webapp.exception.ResourceNotFoundException;
 import com.paymybuddy.webapp.model.Person;
+import com.paymybuddy.webapp.model.Transaction;
 import com.paymybuddy.webapp.model.Wallet;
+import com.paymybuddy.webapp.repository.PersonRepository;
 import com.paymybuddy.webapp.repository.WalletRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +17,13 @@ import java.util.List;
 @Service
 public class WalletService implements IWalletService{
 
+    private final Logger logger = LoggerFactory.getLogger(ContactService.class);
+
     @Autowired
     private WalletRepository walletRepository;
+
+    @Autowired
+    private PersonRepository personRepository;
 
     @Override
     public List<Wallet> getAllWallet() {
@@ -50,6 +59,19 @@ public class WalletService implements IWalletService{
         float newAmount = actualAmount - amount;
         personWallet.setAmount(newAmount);
         return newAmount;
+    }
+    @Override
+    public void addMoneyToWallet(String userEmail, Float amount){
+        Person user = personRepository.findByEmail(userEmail);
+        Integer userId = user.getIdPerson();
+
+        Wallet userWallet = getWalletByPersonId(userId);
+        if(amount > 0){
+            userWallet.setAmount(addMoneyToWallet(userWallet.getIdWallet(),amount));
+            walletRepository.save(userWallet);
+            logger.info("Money add to account success");
+        }
+        logger.info("Amount need to be above O");
     }
 
 }

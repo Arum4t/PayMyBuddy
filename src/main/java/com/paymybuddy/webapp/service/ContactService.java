@@ -34,26 +34,30 @@ public class    ContactService implements IContactService {
     private PersonRepository personRepository;
 
     @Override
-    public void addConnection(String contactEmail, Principal principal){
+    public void addConnection(String contactEmail, Principal principal) throws NoUserFoundException {
 
         Person personUser = personRepository.findByEmail(principal.getName());
         Person personToAdd = personRepository.findByEmail(contactEmail);
 
-        Integer personId = personUser.getIdPerson();
-        Integer contactId = personToAdd.getIdPerson();
-
-        if(contactId == null){
+        if(personToAdd == null){
             logger.info("Request add connection failed");
             throw new NoUserFoundException(contactEmail);
         }
-        if(!Objects.equals(contactId, personId)){
-            logger.info("add connection successful");
+        Integer personId = personUser.getIdPerson();
+        Integer contactId = personToAdd.getIdPerson();
 
-            Contact newContact = new Contact();
-            newContact.setContact(personToAdd);
-            newContact.setPerson(personUser);
 
-            contactRepository.save(newContact);
+        if(personRepository.findAll().contains(personToAdd)) {
+
+            if (!Objects.equals(contactId, personId)) {
+                logger.info("add connection successful");
+
+                Contact newContact = new Contact();
+                newContact.setContact(personToAdd);
+                newContact.setPerson(personUser);
+
+                contactRepository.save(newContact);
+            }
         }
         logger.info("add connection failed");
     }
