@@ -20,7 +20,8 @@
 
                         <div class="">
 
-                            <h2 class="title_index fw-bold mb-1 text-white rounded pt-2 pb-2 d-inline-flex p-2 justify-content-center">Pay My Buddy</h2>
+                            <h2 class="title_index fw-bold mb-1 text-white rounded pt-2 pb-2 d-inline-flex p-2 justify-content-center">
+                                Pay My Buddy</h2>
                             <p class="text-white-50 mb-5"></p>
 
                             <div class="alert alert-success" role="alert" th:if="${registrationMsg != null}">
@@ -37,20 +38,24 @@
                                     <div class="fields">
                                         <div class="input-group form-outline form-white mb-4">
                                             <span class="input-group-append">
-                                                <button class="input_icon btn btn-outline-secondary bg-white border-start-0 border-bottom-1 border ms-n5 rounded" type="button">
+                                                <button class="input_icon btn btn-outline-secondary bg-white border-start-0 border-bottom-1 border ms-n5 rounded"
+                                                        type="button">
                                                     <i class="fa-regular fa-envelope"></i>
                                                 </button>
                                             </span>
-                                            <input type="email" class="form-control form-control-lg" th:field="*{email}" placeholder="Email"
+                                            <input type="email" class="form-control form-control-lg" th:field="*{email}"
+                                                   placeholder="Email"
                                                    th:errorclass="is-invalid">
                                         </div>
                                         <div class="input-group form-outline form-white mb-4">
                                              <span class="input-group-append">
-                                                <button class="input_icon btn btn-outline-secondary bg-white border-start-0 border-bottom-1 border ms-n5 rounded" type="button">
+                                                <button class="input_icon btn btn-outline-secondary bg-white border-start-0 border-bottom-1 border ms-n5 rounded"
+                                                        type="button">
                                                     <i class="fa-solid fa-asterisk pr-1"></i>
                                                 </button>
                                             </span>
-                                            <input type="password" class="form-control form-control-lg" th:field="*{password}" placeholder="Password"
+                                            <input type="password" class="form-control form-control-lg"
+                                                   th:field="*{password}" placeholder="Password"
                                                    th:errorclass="is-invalid">
                                         </div>
                                     </div>

@@ -53,36 +53,43 @@
     </ol>
 </nav>
 
-    <div class="profile_box bg-light">
+<div class="profile_box bg-light">
 
-        <div class="profile_information d-flex flex-column">
-        <p class="text-dark fw-bold">Your email</p><div class="pl-2 profile_title_email fw-bold rounded text-white" th:text="${profile.email}"></div>
-            <form th:action="@{/persons/email}" method="post">
-                <div class="update_email p-2">
-                    <label for="update_email"></label>
-                    <input type="email" name="newEmail" class="form-control" id="update_email" placeholder="change your email" required>
-                    <button class="btn btn-primary mt-3" type="submit">Save change</button>
-                </div>
-            </form>
-            <form th:action="@{/persons/password}" method="post">
-                <div class="update_password p-2">
-                    <label for="update_password"></label>
-                    <input type="password" id="update_password" class="form-control" name="newPassword" placeholder="change your password" required>
-                    <button class="btn btn-primary mt-3" type="submit">Save change</button>
-                    <p class="profile_advertise mb-2">Change will disconnect you, please relog after saving.</p>
-                </div>
-            </form>
-            <div class="balance_profile mt-4">
-              <p class="text-dark fw-bold">Your current balance</p><div class="pl-2 profile_title_balance fw-bold rounded text-white" th:text="${profileWallet.amount}"></div>
-                <div class="test">
-                    <form th:action="@{/wallet/addMoney}" method="post">
-                    <label for="quantity"></label><input class="add_money_balance text-center form-control mb-3" type="number" id="quantity" name="amount" min="1" max="3000" required>
-                    <label for="btn-submit"></label><button id="btn-submit" class="btn btn-primary" type="submit">Add money to your account</button>
-                    </form>
-                </div>
+    <div class="profile_information d-flex flex-column">
+        <p class="text-dark fw-bold">Your email</p>
+        <div class="pl-2 profile_title_email fw-bold rounded text-white" th:text="${profile.email}"></div>
+        <form th:action="@{/persons/email}" method="post">
+            <div class="update_email p-2">
+                <label for="update_email"></label>
+                <input type="email" name="newEmail" class="form-control" id="update_email"
+                       placeholder="change your email" required>
+                <button class="btn btn-primary mt-3" type="submit">Save change</button>
+            </div>
+        </form>
+        <form th:action="@{/persons/password}" method="post">
+            <div class="update_password p-2">
+                <label for="update_password"></label>
+                <input type="password" id="update_password" class="form-control" name="newPassword"
+                       placeholder="change your password" required>
+                <button class="btn btn-primary mt-3" type="submit">Save change</button>
+                <p class="profile_advertise mb-2">Change will disconnect you, please relog after saving.</p>
+            </div>
+        </form>
+        <div class="balance_profile mt-4">
+            <p class="text-dark fw-bold">Your current balance</p>
+            <div class="pl-2 profile_title_balance fw-bold rounded text-white" th:text="${profileWallet.amount}"></div>
+            <div class="test">
+                <form th:action="@{/wallet/addMoney}" method="post">
+                    <label for="quantity"></label><input class="add_money_balance text-center form-control mb-3"
+                                                         type="number" id="quantity" name="amount" min="1" max="3000"
+                                                         required>
+                    <label for="btn-submit"></label>
+                    <button id="btn-submit" class="btn btn-primary" type="submit">Add money to your account</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
 </body>
 </html>

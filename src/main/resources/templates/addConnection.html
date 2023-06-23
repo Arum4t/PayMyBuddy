@@ -55,19 +55,21 @@
     </ol>
 </nav>
 
-    <div class="alert alert-danger text-center" th:if="${errorMsg}">
-        <div th:text="${errorMsg}"></div>
-    </div>
+<div class="alert alert-danger text-center" th:if="${errorMsg}">
+    <div th:text="${errorMsg}"></div>
+</div>
 
 <div class="d-flex flex-row justify-content-center">
-<form method="post" th:action="@{/contacts/addConnection}">
-    <div class="d-inline-flex p-2">
-    <label for="email"></label><input class="form-control" type="email" id="email" name="email" placeholder="Email to add" required>
-    </div>
-    <div class="d-inline-flex p-2">
-        <label for="btn-submit"></label><button id="btn-submit" type="submit" class="btn btn-primary">Add connection</button>
-    </div>
-</form>
+    <form method="post" th:action="@{/contacts/addConnection}">
+        <div class="d-inline-flex p-2">
+            <label for="email"></label><input class="form-control" type="email" id="email" name="email"
+                                              placeholder="Email to add" required>
+        </div>
+        <div class="d-inline-flex p-2">
+            <label for="btn-submit"></label>
+            <button id="btn-submit" type="submit" class="btn btn-primary">Add connection</button>
+        </div>
+    </form>
 </div>
 
 </body>
