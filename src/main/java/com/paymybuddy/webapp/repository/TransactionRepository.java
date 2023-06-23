@@ -1,6 +1,5 @@
 package com.paymybuddy.webapp.repository;
 
-import com.paymybuddy.webapp.model.Contact;
 import com.paymybuddy.webapp.model.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -2,7 +2,6 @@ package com.paymybuddy.webapp.service;
 
 import com.paymybuddy.webapp.model.Wallet;
 
-import java.security.Principal;
 import java.util.List;
 
 public interface IWalletService {

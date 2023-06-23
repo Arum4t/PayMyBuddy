@@ -1,11 +1,6 @@
 package com.paymybuddy.webapp.controller;
 
-import com.paymybuddy.webapp.model.Person;
-import com.paymybuddy.webapp.model.Transaction;
-import com.paymybuddy.webapp.model.Wallet;
 import com.paymybuddy.webapp.model.specific.TransactionData;
-import com.paymybuddy.webapp.repository.ContactRepository;
-import com.paymybuddy.webapp.repository.PersonRepository;
 import com.paymybuddy.webapp.service.ContactService;
 import com.paymybuddy.webapp.service.PersonService;
 import com.paymybuddy.webapp.service.TransactionService;
@@ -16,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller

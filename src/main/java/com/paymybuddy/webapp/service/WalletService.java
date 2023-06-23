@@ -2,7 +2,6 @@ package com.paymybuddy.webapp.service;
 
 import com.paymybuddy.webapp.exception.ResourceNotFoundException;
 import com.paymybuddy.webapp.model.Person;
-import com.paymybuddy.webapp.model.Transaction;
 import com.paymybuddy.webapp.model.Wallet;
 import com.paymybuddy.webapp.repository.PersonRepository;
 import com.paymybuddy.webapp.repository.WalletRepository;
@@ -11,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
 import java.util.List;
 
 @Service
