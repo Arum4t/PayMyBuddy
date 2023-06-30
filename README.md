@@ -1,6 +1,6 @@
-<a href="https://zupimages.net/viewer.php?id=23/25/aggi.png"><img src="https://zupimages.net/up/23/25/aggi.png" alt="" /></a>
+<a href="https://zupimages.net/viewer.php?id=23/26/v2by.png"><img src="https://zupimages.net/up/23/26/v2by.png" alt="" /></a>
 
-## Projet Pay My Buddy
+## Project Pay My Buddy
 Hi, I'm Quentin Schnurr
 I’m currently working on Pay My Buddy as a junior developper.
 It's a person to person payment application using Spring and mySQL.
@@ -57,4 +57,3 @@ An open-source tool that makes it easier to use Java-based frameworks to create 
 ---------------------------------------
 ## Languages and Tools
 <p align="left"> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/fr/6/62/MySQL.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://spring.io/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="40" height="40"/> </a> </p>
-
