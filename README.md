@@ -32,6 +32,14 @@ You can change it in src/main/resources/application.properties too.
 An open-source tool that makes it easier to use Java-based frameworks to create microservices and web apps.
 
 ---
+## Conceptual model : UML
+<a href="https://zupimages.net/viewer.php?id=23/26/57y9.png"><img src="https://zupimages.net/up/23/26/57y9.png" alt="" /></a>
+
+---
+## Relational model
+<a href="https://zupimages.net/viewer.php?id=23/26/en7u.png"><img src="https://zupimages.net/up/23/26/en7u.png" alt="" /></a>
+
+---
 ## Functionnalities 
 
 **Default page**
