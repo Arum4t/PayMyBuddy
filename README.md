@@ -58,4 +58,14 @@ An open-source tool that makes it easier to use Java-based frameworks to create 
 
 ---
 ## Languages and Tools
-<p align="center"> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/fr/6/62/MySQL.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://spring.io/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="40" height="40"/> </a> </p>
+<p align="center">
+<a href="https://www.java.com" target="_blank" rel="noreferrer"> 
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="60" height="60"/>
+</a>&ensp;   
+<a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> 
+<img src="https://upload.wikimedia.org/wikipedia/fr/6/62/MySQL.svg" alt="mysql" width="70" height="70"/> 
+</a>&emsp; 
+<a href="https://spring.io/" target="_blank" rel="noreferrer"> 
+<img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="50" height="50"/>
+</a> 
+</p>
