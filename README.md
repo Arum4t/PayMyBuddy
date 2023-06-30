@@ -1,11 +1,25 @@
 <p align="center"><a href="https://zupimages.net/viewer.php?id=23/26/hl85.png"><img src="https://zupimages.net/up/23/26/hl85.png" alt="" /></a></p>
 
+## Languages and Tools
+<p align="center">
+<a href="https://www.java.com" target="_blank" rel="noreferrer"> 
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="60" height="60"/>
+</a>&ensp;   
+<a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> 
+<img src="https://upload.wikimedia.org/wikipedia/fr/6/62/MySQL.svg" alt="mysql" width="70" height="70"/> 
+</a>&emsp; 
+<a href="https://spring.io/" target="_blank" rel="noreferrer"> 
+<img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="50" height="50"/>
+</a> 
+</p>
+
+---
 ## Project Pay My Buddy
 Hi, I'm Quentin Schnurr  
 I’m currently working on Pay My Buddy as a junior developper.  
 It's a person to person payment application using Spring and mySQL.  
 
----------------------------------------
+---
 ## Installation
 
 - Fork and clone the project.
@@ -62,18 +76,3 @@ An open-source tool that makes it easier to use Java-based frameworks to create 
 - Add money  
 - Change your password  
 - Change your email  
- 
-
----
-## Languages and Tools
-<p align="center">
-<a href="https://www.java.com" target="_blank" rel="noreferrer"> 
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="60" height="60"/>
-</a>&ensp;   
-<a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> 
-<img src="https://upload.wikimedia.org/wikipedia/fr/6/62/MySQL.svg" alt="mysql" width="70" height="70"/> 
-</a>&emsp; 
-<a href="https://spring.io/" target="_blank" rel="noreferrer"> 
-<img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="50" height="50"/>
-</a> 
-</p>
