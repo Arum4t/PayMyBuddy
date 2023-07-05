@@ -22,7 +22,7 @@ public class ContactController {
     @RequestMapping(value = "/contacts/addConnection", method = RequestMethod.POST)
     private String addConnection(@RequestParam(value = "email") String contactEmail, Principal principal, Model model){
         try {
-            contactService.addConnection(contactEmail, principal);
+            contactService.addConnection(contactEmail, principal.getName());
             return "redirect:/transfers/";
         } catch (NoUserFoundException e) {
             model.addAttribute("errorMsg", e.getMessage());
