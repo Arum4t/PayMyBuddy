@@ -58,7 +58,7 @@ An open-source tool that makes it easier to use Java-based frameworks to create 
 
 ---
 ## Conceptual model : UML
-<a href="https://zupimages.net/viewer.php?id=23/26/57y9.png"><img src="https://zupimages.net/up/23/26/57y9.png" alt="" /></a>
+<a href="https://zupimages.net/viewer.php?id=23/27/b52t.png"><img src="https://zupimages.net/up/23/27/b52t.png" alt="" /></a>
 
 ---
 ## Relational model
