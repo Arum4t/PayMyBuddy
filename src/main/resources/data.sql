@@ -15,7 +15,9 @@ INSERT INTO `Person` (`id_person`,`email`, `password`,`role`)
 VALUES
 (1, 'olivier@test.com', '$2a$12$8zeEZLc3EdOUbzVfsMsEVu5SI/UnPE4wsV2cGdsFjX0seHBaXMfua', 'user'),
 (2, 'bertrand@test.com', '$2a$12$UF7oLqJwmM9vjUqtjIK.GOJ..Aay.AgEY45KOJb6ukNDKloyEIY9S', 'user'),
-(3, 'tim@test.com', '$2a$12$hTmdt.M.pyvj1GpYTBIlC.Er2vR6G1eK/fzs8nR4m6/Rtsetj7KKG', 'admin');
+(3, 'tim@test.com', '$2a$12$hTmdt.M.pyvj1GpYTBIlC.Er2vR6G1eK/fzs8nR4m6/Rtsetj7KKG', 'admin'),
+(4, 'testeur@test.com', 'testeur', 'user'),
+(5, 'testeurContact@test.com', 'testeur2', 'user');
 
 DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE `contacts`
@@ -50,7 +52,9 @@ INSERT INTO `Wallet` (`id_wallet`, `id_person`, `amount_wallet`)
 VALUES
 (1, 1, 500),
 (2, 3, 1000),
-(3, 2, 20000);
+(3, 2, 20000),
+(4, 4, 1000),
+(5, 5, 1000);
 
 
 DROP TABLE IF EXISTS `Transaction`;
@@ -72,4 +76,5 @@ VALUES
 (1,'pizza', 100,1,2),
 (2,'voyages', 100,2,1),
 (3,'achat', 100,1,3),
-(4,'restaurant', 500,3,1);
+(4,'restaurant', 500,3,1),
+(5,'fastfood', 50,4,1);

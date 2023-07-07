@@ -43,7 +43,7 @@ public class RegistrationController {
             model.addAttribute("registrationForm", personData);
             return "register";
         }
-        return "login";
+        return "redirect:/login";
     }
 
 

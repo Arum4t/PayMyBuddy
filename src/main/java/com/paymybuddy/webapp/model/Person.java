@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -32,12 +33,14 @@ public class Person{
     @Column(name = "role", nullable = false)
     private String role;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
+    @OneToMany(mappedBy = "person")
     @JsonManagedReference
+    @ToString.Exclude
     private List<Contact> personList;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contact")
+    @OneToMany(mappedBy = "contact")
     @JsonManagedReference
+    @ToString.Exclude
     private List<Contact> contactList;
 
 }

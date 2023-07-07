@@ -33,8 +33,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
-                // .antMatchers(HttpMethod.DELETE,"persons/**").hasAnyAuthority(ApplicationUserPermission.USER_WRITE.name())
-                //.antMatchers("/**").hasRole(USER.name())
                 .antMatchers("/register").permitAll()
                 .anyRequest()
                 .authenticated()
@@ -55,7 +53,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                     .invalidateHttpSession(true)
                     .deleteCookies("remember-me")
                     .logoutSuccessUrl("/login");
-
     }
 
     @Autowired

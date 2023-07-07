@@ -53,6 +53,7 @@ public class TransactionService implements ITransactionService {
         logger.info("Amount need to be above O");
     }
 
+    @Override
     public List<TransactionData> userTransactionMade(Integer walletId){
         List<TransactionData> transactionMade = new ArrayList<>();
 
@@ -67,6 +68,7 @@ public class TransactionService implements ITransactionService {
         }
         return transactionMade;
     }
+    @Override
     public List<TransactionData> userTransactionReceived(Integer walletId){
         List<TransactionData> transactionReceived = new ArrayList<>();
 

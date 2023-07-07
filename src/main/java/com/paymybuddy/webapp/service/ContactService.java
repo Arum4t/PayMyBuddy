@@ -35,7 +35,6 @@ public class    ContactService implements IContactService {
 
     @Override
     public void addConnection(String contactEmail, String currentEmail) throws NoUserFoundException {
-
         Person personUser = personRepository.findByEmail(currentEmail);
         Person personToAdd = personRepository.findByEmail(contactEmail);
 
@@ -46,16 +45,12 @@ public class    ContactService implements IContactService {
         Integer personId = personUser.getIdPerson();
         Integer contactId = personToAdd.getIdPerson();
 
-
         if(personRepository.findAll().contains(personToAdd)) {
-
             if (!Objects.equals(contactId, personId)) {
                 logger.info("add connection successful");
-
                 Contact newContact = new Contact();
                 newContact.setContact(personToAdd);
                 newContact.setPerson(personUser);
-
                 contactRepository.save(newContact);
             }
         }
