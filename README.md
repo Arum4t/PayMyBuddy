@@ -23,12 +23,23 @@ It's a person to person payment application using Spring and mySQL.
 ## Installation
 
 - Fork and clone the project.
-- Define a environment variable with your mySQL account to run the project.  
-You can change it in src/main/resources/application.properties too. 
-    - spring.datasource.username=yourUsername     
-    - spring.datasource.password=yourPassword
+- Define a environment variables with your mySQL account to run the project.  
 
-- Open a prompt and use : mvn spring-boot:run or run it through your IDE.
+    ### 1) With Intellij/IDE
+  - Edit configuration of "PayMyPuddyApplication"
+  - Add environment variables in "more option"
+  - Add both username and password  
+  
+       <a href="https://zupimages.net/viewer.php?id=23/27/hmda.png"><img src="https://zupimages.net/up/23/27/hmda.png" alt="" /></a>
+
+### 2) With command prompt
+- Open a prompt in the root file of the project
+
+- Use the following commands:   
+"export DB_USERNAME=yourUsername" and press enter.  
+"export DB_PASSWORD=yourpassword" and press enter.  
+"mvn spring-boot:run" is to run the project.
+
 - Default Controller URL `http://localhost:8080/`.  
 *You can change port in src/main/resources/application.properties*
 
